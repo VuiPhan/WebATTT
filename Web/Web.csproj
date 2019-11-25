@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Web</RootNamespace>
     <AssemblyName>Web</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44369</IISExpressSSLPort>
@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,10 +66,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -219,6 +216,78 @@
     <Content Include="Areas\Admin\Views\InfoAdmin\Sidebar.cshtml" />
     <Content Include="Areas\Admin\Views\Member\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Supplier\Index.cshtml" />
+    <Content Include="Areas\SalesMan\Views\Home\Index.cshtml" />
+    <Content Include="Areas\SalesMan\Views\Order\BrowseOrder.cshtml" />
+    <Content Include="Areas\SalesMan\Views\Order\TestPagging.cshtml" />
+    <Content Include="Areas\SalesMan\Views\Order\ViewOrders.cshtml" />
+    <Content Include="Areas\SalesMan\Views\Order\XoaDi.cshtml" />
+    <Content Include="Areas\SalesMan\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\SalesMan\Views\web.config" />
+    <Content Include="Resources\WarehouseStaff\css\style.css.map" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Bold.eot" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Bold.ttf" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Bold.woff" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Bold.woff2" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Light.eot" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Light.ttf" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Light.woff" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Light.woff2" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Medium.eot" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Medium.ttf" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Medium.woff" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Medium.woff2" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Regular.eot" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Regular.ttf" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Regular.woff" />
+    <Content Include="Resources\WarehouseStaff\fonts\Ubuntu\Ubuntu-Regular.woff2" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_badges.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_bootstrap-progress.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_breadcrumbs.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_buttons.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_cards.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_checkbox-radio.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_dropdown.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_forms.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_icons.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_lists.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_preview.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_tables.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\components\_todo-list.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\landing-screens\_auth.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_animation.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_background.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_badges.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_blockqoute.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_breadcrumbs.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_buttons.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_cards.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_misc.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_pagination.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_popovers.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_text.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\mixins\_tooltips.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\style.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_dashboard.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_demo.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_fonts.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_footer.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_functions.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_layouts.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_misc.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_navbar.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_reset.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_sidebar.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_typography.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_utilities.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_variables.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_vertical-wrapper.scss" />
+    <Content Include="Resources\WarehouseStaff\scss\_widget-grid.scss" />
+    <Content Include="Resources\WarehouseStaff\vendors\js\bootstrap.min.js.map" />
+    <Content Include="Resources\WarehouseStaff\vendors\mdi\css\materialdesignicons.min.css.map" />
+    <Content Include="Resources\WarehouseStaff\vendors\mdi\fonts\materialdesignicons-webfont.eot" />
+    <Content Include="Resources\WarehouseStaff\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
+    <Content Include="Resources\WarehouseStaff\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
+    <Content Include="Resources\WarehouseStaff\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Resources\Admin\css\style.css" />
     <Content Include="Resources\Admin\images\dashboard\circle.png" />
@@ -544,10 +613,84 @@
     <Content Include="Resources\Client\js\vendor\bootstrap.min.js" />
     <Content Include="Resources\Client\js\vendor\jquery-2.2.4.min.js" />
     <Content Include="Resources\Client\js\vendor\popper.js" />
+    <Content Include="Resources\WarehouseStaff\css\style.css" />
+    <Content Include="Resources\WarehouseStaff\images\dashboard\circle.png" />
+    <Content Include="Resources\WarehouseStaff\images\dashboard\circle.svg" />
+    <Content Include="Resources\WarehouseStaff\images\dashboard\img_1.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\dashboard\img_2.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\dashboard\img_3.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\dashboard\img_4.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces-clipart\pic-1.png" />
+    <Content Include="Resources\WarehouseStaff\images\faces-clipart\pic-2.png" />
+    <Content Include="Resources\WarehouseStaff\images\faces-clipart\pic-3.png" />
+    <Content Include="Resources\WarehouseStaff\images\faces-clipart\pic-4.png" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face1.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face10.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face11.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face12.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face13.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face14.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face15.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face16.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face17.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face18.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face19.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face2.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face20.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face21.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face22.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face23.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face24.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face25.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face26.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face27.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face3.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face4.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face5.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face6.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face7.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face8.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\faces\face9.jpg" />
+    <Content Include="Resources\WarehouseStaff\images\favicon.png" />
+    <Content Include="Resources\WarehouseStaff\images\logo-mini.svg" />
+    <Content Include="Resources\WarehouseStaff\images\logo.svg" />
+    <Content Include="Resources\WarehouseStaff\images\sprites\blue.png" />
+    <Content Include="Resources\WarehouseStaff\images\sprites\dark.png" />
+    <Content Include="Resources\WarehouseStaff\images\sprites\flag.png" />
+    <Content Include="Resources\WarehouseStaff\images\sprites\green.png" />
+    <Content Include="Resources\WarehouseStaff\images\sprites\jsgrid-icons.png" />
+    <Content Include="Resources\WarehouseStaff\images\sprites\red.png" />
+    <Content Include="Resources\WarehouseStaff\images\sprites\yellow.png" />
+    <Content Include="Resources\WarehouseStaff\js\chart.js" />
+    <Content Include="Resources\WarehouseStaff\js\dashboard.js" />
+    <Content Include="Resources\WarehouseStaff\js\file-upload.js" />
+    <Content Include="Resources\WarehouseStaff\js\hoverable-collapse.js" />
+    <Content Include="Resources\WarehouseStaff\js\ImportBill.js" />
+    <Content Include="Resources\WarehouseStaff\js\misc.js" />
+    <Content Include="Resources\WarehouseStaff\js\off-canvas.js" />
+    <Content Include="Resources\WarehouseStaff\js\Producer.js" />
+    <Content Include="Resources\WarehouseStaff\js\Product.js" />
+    <Content Include="Resources\WarehouseStaff\js\ProductType.js" />
+    <Content Include="Resources\WarehouseStaff\js\Supplier.js" />
+    <Content Include="Resources\WarehouseStaff\js\todo.js" />
+    <Content Include="Resources\WarehouseStaff\js\todolist.js" />
+    <Content Include="Resources\WarehouseStaff\js\WareHouse.js" />
+    <Content Include="Resources\WarehouseStaff\vendors\chart.js\Chart.min.js" />
+    <Content Include="Resources\WarehouseStaff\vendors\css\vendor.bundle.base.css" />
+    <Content Include="Resources\WarehouseStaff\vendors\js\vendor.bundle.base.js" />
+    <Content Include="Resources\WarehouseStaff\vendors\mdi\css\materialdesignicons.min.css" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap.min.css" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Controller\ViewOrderController.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\PhanTrang.css" />
+    <Content Include="Scripts\plugin\jquery.twbsPagination.min.js" />
+    <Content Include="Scripts\plugin\mustache.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -558,6 +701,10 @@
     <Compile Include="Areas\Admin\Controllers\InfoAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\MemberController.cs" />
     <Compile Include="Areas\Admin\Controllers\SupplierController.cs" />
+    <Compile Include="Areas\SalesMan\Controllers\Employee.cs" />
+    <Compile Include="Areas\SalesMan\Controllers\HomeController.cs" />
+    <Compile Include="Areas\SalesMan\Controllers\OrderController.cs" />
+    <Compile Include="Areas\SalesMan\SalesManAreaRegistration.cs" />
     <Compile Include="Areas\WarehouseStaff\Controllers\CategoryController.cs" />
     <Compile Include="Areas\WarehouseStaff\Controllers\ProducerController.cs" />
     <Compile Include="Areas\WarehouseStaff\Controllers\ProductController.cs" />
@@ -616,6 +763,7 @@
     <Folder Include="App_Img\producer\" />
     <Folder Include="App_Img\product\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\SalesMan\Models\" />
     <Folder Include="Areas\WarehouseStaff\Models\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
