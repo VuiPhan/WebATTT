@@ -12,7 +12,13 @@ namespace Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+                        routes.MapRoute(
+              name: "chitietDonHang",
+              url: "chitietDonHang/{id}",
+              defaults: new { area = "SalesMan", controller = "Order", action = "BrowseOrder", id = UrlParameter.Optional },
 
+              namespaces: new[] { "BanDoTheThao.Areas.SalesMan.Controllers" }
+            ).DataTokens.Add("area", "SalesMan");
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
