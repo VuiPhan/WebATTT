@@ -16,7 +16,8 @@ namespace Web.Models.Data
         }
 
         [Key]
-        public DateTime IDCus { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int IDCus { get; set; }
 
         [StringLength(100)]
         public string NameCus { get; set; }

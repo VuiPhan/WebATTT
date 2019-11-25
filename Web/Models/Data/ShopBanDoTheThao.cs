@@ -43,11 +43,6 @@ namespace Web.Models.Data
                 .Property(e => e.EmailCus)
                 .IsFixedLength();
 
-            modelBuilder.Entity<Customer>()
-                .HasMany(e => e.Orders)
-                .WithOptional(e => e.Customer)
-                .HasForeignKey(e => e.DeliveryDate);
-
             modelBuilder.Entity<DetailImport>()
                 .Property(e => e.Price)
                 .HasPrecision(18, 0);
@@ -79,6 +74,11 @@ namespace Web.Models.Data
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.YearManufacture)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Supplier>()
+                .Property(e => e.PhoneNumber)
                 .IsFixedLength()
                 .IsUnicode(false);
         }

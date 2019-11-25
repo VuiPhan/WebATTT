@@ -210,6 +210,15 @@
     <Content Include="Areas\WarehouseStaff\Views\Supplier\Index.cshtml" />
     <Content Include="Areas\WarehouseStaff\Views\Warehouse\Index.cshtml" />
     <Content Include="Areas\WarehouseStaff\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Employee\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\InfoAdmin\Header.cshtml" />
+    <Content Include="Areas\Admin\Views\InfoAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\InfoAdmin\Sidebar.cshtml" />
+    <Content Include="Areas\Admin\Views\Member\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Supplier\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Resources\Admin\css\style.css" />
     <Content Include="Resources\Admin\images\dashboard\circle.png" />
@@ -543,6 +552,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\InfoAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MemberController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SupplierController.cs" />
     <Compile Include="Areas\WarehouseStaff\Controllers\CategoryController.cs" />
     <Compile Include="Areas\WarehouseStaff\Controllers\ProducerController.cs" />
     <Compile Include="Areas\WarehouseStaff\Controllers\ProductController.cs" />
@@ -568,9 +583,19 @@
     <Compile Include="Models\Data\StatusOrder.cs" />
     <Compile Include="Models\Data\Supplier.cs" />
     <Compile Include="Models\Data\WareHouse.cs" />
+    <Compile Include="Models\DB\DetailImportDao.cs" />
+    <Compile Include="Models\DB\EmployeeDao.cs" />
+    <Compile Include="Models\DB\ImportBillDao.cs" />
+    <Compile Include="Models\DB\InfoAdminDao.cs" />
+    <Compile Include="Models\DB\MemberDao.cs" />
+    <Compile Include="Models\DB\StatisticalDao.cs" />
+    <Compile Include="Models\DB\SupplierDao.cs" />
+    <Compile Include="Models\ViewModels\DetailImportModel.cs" />
+    <Compile Include="Models\ViewModels\MaHoa.cs" />
     <Compile Include="Models\ViewModels\ProducerVM.cs" />
     <Compile Include="Models\ViewModels\ProductTypeVM.cs" />
     <Compile Include="Models\ViewModels\ProductVM.cs" />
+    <Compile Include="Models\ViewModels\StatisticalModel.cs" />
     <Compile Include="Models\ViewModels\SupplierVM.cs" />
     <Compile Include="Models\ViewModels\WarehouseVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -590,9 +615,9 @@
   <ItemGroup>
     <Folder Include="App_Img\producer\" />
     <Folder Include="App_Img\product\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\WarehouseStaff\Models\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\DB\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
