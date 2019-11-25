@@ -20,8 +20,6 @@ namespace BanDoTheThao.Areas.SalesMan.Controllers
         {
             return View();
         }
-
-
         public ActionResult TestPagging()
         {
             return View();
