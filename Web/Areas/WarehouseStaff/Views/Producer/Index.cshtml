@@ -1,0 +1,221 @@
+﻿@model Web.Models.ViewModels.ProducerVM
+@{
+    ViewBag.Title = "Nhà sản xuất";
+    Layout = "~/Areas/WarehouseStaff/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Producer</h4>
+            <a href="#" class="btn btn-info" onclick="Add(0)">Thêm nhà sản xuất mới</a>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> Tên nhà sản xuất</th>
+                        <th> Thông tin</th>
+                        <th> Logo</th>
+                        <th> Thao tác (Sửa)</th>
+                        <th> Thao tác (Xóa)</th>
+                    </tr>
+                </thead>
+                <tbody id="SetList">
+                    <tr id="LoadingStatus" style="color:red"></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @*Create A Popup Modal With Registration Form For Add Or Edit Record*@
+
+    <div class="modal fade" id="MyModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="ModalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <form class="forms-sample" id="form" enctype="multipart/form-data">
+                        <fieldset id="SubmitForm">
+                            @Html.HiddenFor(m => m.IDProducer, new { @id = "IDProducer" })
+                            <div class="form-group">
+                                <label for="NameProducer">Tên nhà sản xuất</label>
+                                @Html.TextBoxFor(m => m.NameProducer, new { @id = "NameProducer", @class = "form-control", @placeholder = "Tên nhà sản xuất" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Information">Thông tin</label>
+                                @Html.TextBoxFor(m => m.Information, new { @id = "Information", @class = "form-control", @placeholder = "Thông tin" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Logo">Logo</label>
+                                @Html.TextBoxFor(m => m.Logo, new {@id = "Logo", @class = "form-control", @hidden = "hidden" })
+                                <input type="file" class="form-control" id="file" value="Chọn tệp ảnh" />
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-gradient-primary mr-2" id="SaveRecord">Lưu</button>
+                    <button class="btn btn-light" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Create A PopUp Modal For DeleteConfirmation*@
+
+    <div class="modal fade" id="DeleteConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Xóa nhà sản xuất</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>Bạn có muốn xóa nhà sản xuất này không?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-light" data-dismiss="modal" id="r">Hủy</a>
+                    <a href="#" class="btn btn-gradient-primary mr-2" onclick="ConfirmDelete()">Xác nhận</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("#file").change(function () {
+        if (window.FormData !== undefined) {
+            var fileUpload = $('#file').get(0);
+            var file = fileUpload.files;
+            var formData = new FormData();
+            formData.append('file', file[0]);
+            $.ajax({
+                type: 'POST',
+                url: '/Producer/UploadImg',
+                contentType: false, //không có header
+                processData: false, //không xử lý dữ liệu
+                data: formData,
+                success: function (urlImage) {
+                    $('#Logo').val(urlImage);
+                },
+                error: function (err) {
+                    bootbox.alert('Có lỗi khi Upload:' + err.statusText);
+                }
+            })
+        }
+    })
+
+    $("#LoadingStatus").html("Loading....");
+    $.get("/Producer/GetList", null, DataBind);
+    function DataBind(List) {
+        var SetData = $("#SetList");
+        for (var i = 0; i < List.length; i++) {
+            var Data =
+                "<tr class='row_" + List[i].IDProducer + "'>" +
+                "<td>" + List[i].NameProducer + "</td>" +
+                "<td>" + List[i].Information + "</td>" +
+                "<td>" + "<img src='/App_Img/producer/" + List[i].Logo + "') /></td>" +
+                "<td>" +
+                "<a href='#' class='btn btn-warning' onclick='EditRecord(" + List[i].IDProducer + ")' ><span class='mdi mdi-table-edit'></span></a>" +
+                "</td>" +
+                "<td>" +
+                "<a href='#' class='btn btn-danger' onclick='DeleteRecord(" + List[i].IDProducer + ")'><span class='mdi mdi-delete'></span></a>" +
+                "</td>" +
+                "</tr>";
+            SetData.append(Data);
+            $("#LoadingStatus").html(" ");
+        }
+    }
+
+    //Show The Popup Modal For Add
+
+    function Add(IDProducer) {
+        $("#form")[0].reset();
+        $("#IDProducer").val(0);
+        $("#ModalTitle").html("Thêm nhà sản xuất mới");
+        $("#MyModal").modal();
+    }
+
+    //Show The Popup Modal For Edit Record
+
+    function EditRecord(IDProducer) {
+        var url = "/Producer/GetById?Id=" + IDProducer;
+        $("#ModalTitle").html("Sửa nhà sản xuất");
+        $("#MyModal").modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $("#IDProducer").val(obj.IDProducer);
+                $("#NameProducer").val(obj.NameProducer);
+                $("#Information").val(obj.Information);
+                $("#Logo").val(obj.Logo);
+            }
+        })
+    }
+
+    $("#SaveRecord").click(function () {
+        var res = validate();
+        if (res == false) {
+            return false;
+        }
+        var data = $("#SubmitForm").serialize();
+        $.ajax({
+            type: "Post",
+            url: "/Producer/SaveDataInDatabase",
+            data: data,
+            success: function (result) {
+                window.location.href = "/WarehouseStaff/Producer/Index";
+                $("#MyModal").modal("hide");
+
+            }
+        })
+    })
+
+    //Show The Popup Modal For DeleteComfirmation
+    var DeleteRecord = function (Id) {
+        $("#IDProducer").val(Id);
+        $("#DeleteConfirmation").modal("show");
+    }
+    var ConfirmDelete = function () {
+        var IDProducer = $("#IDProducer").val();
+        $.ajax({
+            type: "POST",
+            url: "/Producer/DeleteRecord?Id=" + IDProducer,
+            success: function (result) {
+                $("#DeleteConfirmation").modal("hide");
+                $(".row_" + IDProducer).remove();
+            }
+        })
+    }
+
+    function validate() {
+        var isValid = true;
+        if ($('#NameProducer').val().trim() == "") {
+            $('#NameProducer').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#NameProducer').css('border-color', 'lightgrey');
+        }
+        if ($('#Information').val().trim() == "") {
+            $('#Information').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#Information').css('border-color', 'lightgrey');
+        }
+        if ($('#file').val().trim() == "") {
+            $('#file').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#file').css('border-color', 'lightgrey');
+        }
+        return isValid;
+    }
+</script>
+

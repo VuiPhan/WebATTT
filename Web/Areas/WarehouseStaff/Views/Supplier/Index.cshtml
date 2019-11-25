@@ -1,0 +1,227 @@
+﻿@model Web.Models.ViewModels.SupplierVM
+@{
+    ViewBag.Title = "Nhà cung cấp";
+    Layout = "~/Areas/WarehouseStaff/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Nhà cung cấp sản phẩm</h4>
+            <a href="#" class="btn btn-info" onclick="Add(0)">Thêm nhà cung cấp mới</a>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> Tên nhà cung cấp</th>
+                        <th> Địa chỉ</th>
+                        <th> Email</th>
+                        <th> Số điện thoại</th>
+                        <th> Fax</th>
+                        <th> Thao tác (Sửa)</th>
+                        <th> Thao tác (Xóa)</th>
+                    </tr>
+                </thead>
+                <tbody id="SetList">
+                    <tr id="LoadingStatus" style="color:red"></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @*Create A Popup Modal With Registration Form For Add Or Edit Record*@
+
+    <div class="modal fade" id="MyModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="ModalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <form class="forms-sample" id="form" enctype="multipart/form-data">
+                        <fieldset id="SubmitForm">
+                            @Html.HiddenFor(m => m.IDSupplier, new { @id = "IDSupplier" })
+                            <div class="form-group">
+                                <label for="NameSupplier">Tên nhà cung cấp</label>
+                                @Html.TextBoxFor(m => m.NameSupplier, new { @id = "NameSupplier", @class = "form-control", @placeholder = "Tên nhà cung cấp" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Address">Địa chỉ</label>
+                                @Html.TextBoxFor(m => m.Address, new { @id = "Address", @class = "form-control", @placeholder = "Địa chỉ" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                @Html.TextBoxFor(m => m.Email, new { @id = "Email", @class = "form-control", @placeholder = "Email" })
+                            </div>
+                            <div class="form-group">
+                                <label for="PhoneNumber">Số điện thoại</label>
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @id = "PhoneNumber", @class = "form-control", @placeholder = "Số điện thoại" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Fax">Fax</label>
+                                @Html.TextBoxFor(m => m.Fax, new { @id = "Fax", @class = "form-control", @placeholder = "Fax" })
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-gradient-primary mr-2" id="SaveRecord">Lưu</button>
+                    <button class="btn btn-light" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Create A PopUp Modal For DeleteConfirmation*@
+
+    <div class="modal fade" id="DeleteConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Xóa nhà cung cấp</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>Bạn có muốn xóa nhà cung cấp này không?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-light" data-dismiss="modal" id="r">Hủy</a>
+                    <a href="#" class="btn btn-gradient-primary mr-2" onclick="ConfirmDelete()">Xác nhận</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+   
+    $("#LoadingStatus").html("Loading....");
+    $.get("/Supplier/GetList", null, DataBind);
+    function DataBind(List) {
+        var SetData = $("#SetList");
+        for (var i = 0; i < List.length; i++) {
+            var Data =
+                "<tr class='row_" + List[i].IDSupplier + "'>" +
+                "<td>" + List[i].NameSupplier + "</td>" +
+                "<td>" + List[i].Address + "</td>" +
+                "<td>" + List[i].Email + "</td>" +
+                "<td>" + List[i].PhoneNumber + "</td>" +
+                "<td>" + List[i].Fax + "</td>" +
+                "<td>" +
+                "<a href='#' class='btn btn-warning' onclick='EditRecord(" + List[i].IDSupplier + ")' ><span class='mdi mdi-table-edit'></span></a>" +
+                "</td>" +
+                "<td>" +
+                "<a href='#' class='btn btn-danger' onclick='DeleteRecord(" + List[i].IDSupplier + ")'><span class='mdi mdi-delete'></span></a>" +
+                "</td>" +
+                "</tr>";
+            SetData.append(Data);
+            $("#LoadingStatus").html(" ");
+        }
+    }
+
+    //Show The Popup Modal For Add
+
+    function Add(IDSupplier) {
+        $("#form")[0].reset();
+        $("#IDSupplier").val(0);
+        $("#ModalTitle").html("Thêm nhà cung cấp mới");
+        $("#MyModal").modal();
+    }
+
+    //Show The Popup Modal For Edit Record
+
+    function EditRecord(IDSupplier) {
+        var url = "/Supplier/GetById?Id=" + IDSupplier;
+        $("#ModalTitle").html("Sửa nhà cung cấp");
+        $("#MyModal").modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $("#IDSupplier").val(obj.IDSupplier);
+                $("#NameSupplier").val(obj.NameSupplier);
+                $("#Address").val(obj.Address);
+                $("#Email").val(obj.Email);
+                $("#PhoneNumber").val(obj.PhoneNumber);
+                $("#Fax").val(obj.Fax);
+            }
+        })
+    }
+
+    $("#SaveRecord").click(function () {
+        var res = validate();
+        if (res == false) {
+            return false;
+        }
+        var data = $("#SubmitForm").serialize();
+        $.ajax({
+            type: "Post",
+            url: "/Supplier/SaveDataInDatabase",
+            data: data,
+            success: function (result) {
+                window.location.href = "/WarehouseStaff/Supplier/Index";
+                $("#MyModal").modal("hide");
+
+            }
+        })
+    })
+
+    //Show The Popup Modal For DeleteComfirmation
+    var DeleteRecord = function (Id) {
+        $("#IDSupplier").val(Id);
+        $("#DeleteConfirmation").modal("show");
+    }
+    var ConfirmDelete = function () {
+        var IDSupplier = $("#IDSupplier").val();
+        $.ajax({
+            type: "POST",
+            url: "/Supplier/DeleteRecord?Id=" + IDSupplier,
+            success: function (result) {
+                $("#DeleteConfirmation").modal("hide");
+                $(".row_" + IDSupplier).remove();
+            }
+        })
+    }
+
+    function validate() {
+        var isValid = true;
+        if ($('#NameSupplier').val().trim() == "") {
+            $('#NameSupplier').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#NameSupplier').css('border-color', 'lightgrey');
+        }
+        if ($('#Address').val().trim() == "") {
+            $('#Address').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#Address').css('border-color', 'lightgrey');
+        }
+        if ($('#Email').val().trim() == "") {
+            $('#Email').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#Email').css('border-color', 'lightgrey');
+        }
+        if ($('#PhoneNumber').val().trim() == "") {
+            $('#PhoneNumber').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#PhoneNumber').css('border-color', 'lightgrey');
+        }
+        if ($('#Fax').val().trim() == "") {
+            $('#Fax').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#Fax').css('border-color', 'lightgrey');
+        }
+        
+        return isValid;
+    }
+</script>
