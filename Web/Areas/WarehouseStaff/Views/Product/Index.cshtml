@@ -16,11 +16,7 @@
                         <th> Tên sản phẩm</th>
                         <th> Đơn giá</th>
                         <th> Năm sản xuất</th>
-                        <th> Giới thiệu</th>
                         <th> Ảnh 0</th>
-                        <th> Ảnh 1</th>
-                        <th> Ảnh 2</th>
-                        <th> Ảnh 3</th>
                         <th> Nhà sản xuất</th>
                         <th> Danh mục</th>
                         <th> Kho hàng</th>
@@ -49,6 +45,11 @@
                     <form class="forms-sample" id="form" enctype="multipart/form-data">
                         <fieldset id="SubmitForm">
                             @Html.HiddenFor(m => m.IDProduct, new { @id = "IDProduct" })
+                            @Html.HiddenFor(m => m.DateUpdate, new { @id = "DateUpdate" })
+                            @Html.HiddenFor(m => m.New, new { @id = "New" })
+                            @Html.HiddenFor(m => m.SalesedQuantity, new { @id = "SalesedQuantity" })
+                            @Html.HiddenFor(m => m.Deleted, new { @id = "Deleted" })
+
                             <div class="form-group">
                                 <label for="NameProduct">Tên sản phẩm</label>
                                 @Html.TextBoxFor(m => m.NameProduct, new { @id = "NameProduct", @class = "form-control", @placeholder = "Tên sản phẩm" })
@@ -168,11 +169,7 @@
                 "<td>" + List[i].NameProduct + "</td>" +
                 "<td>" + List[i].Price + "</td>" +
                 "<td>" + List[i].YearManufacture + "</td>" +
-                "<td>" + List[i].Introduce + "</td>" +
                 "<td>" + "<img src='/App_Img/product/" + List[i].Image0 + "') /></td>" +
-                "<td>" + "<img src='/App_Img/product/" + List[i].Image1 + "') /></td>" +
-                "<td>" + "<img src='/App_Img/product/" + List[i].Image2 + "') /></td>" +
-                "<td>" + "<img src='/App_Img/product/" + List[i].Image3 + "') /></td>" +
                 "<td>" + List[i].NameProducer + "</td>" +
                 "<td>" + List[i].NameProductType + "</td>" +
                 "<td>" + List[i].Address + "</td>" +
@@ -210,7 +207,7 @@
             url: url,
             success: function (data) {
                 var obj = JSON.parse(data);
-                $("#IDProduct").val(obj.MaSP);
+                $("#IDProduct").val(obj.IDProduct);
                 $("#DropDwnPro option:selected").text(obj.Producer.NameProducer);
                 $("#DropDwnPro option:selected").val(obj.IDProducer);
                 $("#DropDwnProType option:selected").text(obj.ProductType.NameProductType);
@@ -220,6 +217,9 @@
                 $("#DropDwnSup option:selected").text(obj.Supplier.NameSupplier);
                 $("#DropDwnSup option:selected").val(obj.IDSupplier);
                 $("#NameProduct").val(obj.NameProduct);
+                $("#DateUpdate").val(obj.DateUpdate);
+                $("#New").val(obj.New);
+                 $("#Deleted").val(obj.Deleted);
                 $("#Price").val(obj.Price);
                 $("#YearManufacture").val(obj.YearManufacture);
                 $("#Introduce").val(obj.Introduce);
