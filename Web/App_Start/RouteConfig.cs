@@ -17,7 +17,7 @@ namespace Web
               url: "chitietDonHang/{id}",
               defaults: new { area = "SalesMan", controller = "Order", action = "BrowseOrder", id = UrlParameter.Optional },
 
-              namespaces: new[] { "BanDoTheThao.Areas.SalesMan.Controllers" }
+              namespaces: new[] { "Web.Areas.SalesMan.Controllers" }
             ).DataTokens.Add("area", "SalesMan");
             routes.MapRoute(
                 name: "Default",

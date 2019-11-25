@@ -1,4 +1,4 @@
-(function($) {
+﻿(function($) {
   'use strict';
   $(function() {
 
@@ -200,7 +200,8 @@
                 }
               }
             })
-    }
+      }
+      //tạo biểu đồ cột 
     if ($("#visit-sale-chart").length) {
       Chart.defaults.global.legend.labels.usePointStyle = true;
       var ctx = document.getElementById('visit-sale-chart').getContext("2d");
@@ -220,52 +221,29 @@
       gradientStrokeRed.addColorStop(1, 'rgba(254, 112, 150, 1)');
       var gradientLegendRed = 'linear-gradient(to right, rgba(255, 191, 150, 1), rgba(254, 112, 150, 1))';
 
+      var lst = jQuery.parseJSON($('#txtlistmonth').val());
       var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG'],
+            labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG','SEP','OCT','NOV','DEC'],
             datasets: [
               {
-                label: "CHN",
+                label: "PercentTotalMoney",
                 borderColor: gradientStrokeViolet,
-                backgroundColor: gradientStrokeViolet,
-                hoverBackgroundColor: gradientStrokeViolet,
+                backgroundColor: gradientStrokeRed,
+                hoverBackgroundColor: gradientStrokeBlue,
                 legendColor: gradientLegendViolet,
                 pointRadius: 0,
                 fill: false,
                 borderWidth: 1,
                 fill: 'origin',
-                data: [20, 40, 15, 35, 25, 50, 30, 20]
-              },
-              {
-                label: "USA",
-                borderColor: gradientStrokeRed,
-                backgroundColor: gradientStrokeRed,
-                hoverBackgroundColor: gradientStrokeRed,
-                legendColor: gradientLegendRed,
-                pointRadius: 0,
-                fill: false,
-                borderWidth: 1,
-                fill: 'origin',
-                data: [40, 30, 20, 10, 50, 15, 35, 40]
-              },
-              {
-                label: "UK",
-                borderColor: gradientStrokeBlue,
-                backgroundColor: gradientStrokeBlue,
-                hoverBackgroundColor: gradientStrokeBlue,
-                legendColor: gradientLegendBlue,
-                pointRadius: 0,
-                fill: false,
-                borderWidth: 1,
-                fill: 'origin',
-                data: [70, 10, 30, 40, 25, 50, 15, 30]
+                data: lst
               }
           ]
         },
         options: {
           responsive: true,
-          legend: false,
+          legend: false,    
           legendCallback: function(chart) {
             var text = []; 
             text.push('<ul>'); 
@@ -280,14 +258,14 @@
             } 
             text.push('</ul>'); 
             return text.join('');
-          },
+          },    
           scales: {
               yAxes: [{
                   ticks: {
                       display: false,
                       min: 0,
                       stepSize: 20,
-                      max: 80
+                      max: 100
                   },
                   gridLines: {
                     drawBorder: false,
@@ -438,7 +416,9 @@
           }
       })
       $("#visit-sale-chart-legend-dark").html(myChart.generateLegend());
-    }
+      }
+
+      //tạo biểu đồ tròn
     if ($("#traffic-chart").length) {
       var gradientStrokeBlue = ctx.createLinearGradient(0, 0, 0, 181);
       gradientStrokeBlue.addColorStop(0, 'rgba(54, 215, 232, 1)');
@@ -453,11 +433,12 @@
       var gradientStrokeGreen = ctx.createLinearGradient(0, 0, 0, 300);
       gradientStrokeGreen.addColorStop(0, 'rgba(6, 185, 157, 1)');
       gradientStrokeGreen.addColorStop(1, 'rgba(132, 217, 210, 1)');
-      var gradientLegendGreen = 'linear-gradient(to right, rgba(6, 185, 157, 1), rgba(132, 217, 210, 1))';      
-
-      var trafficChartData = {
-        datasets: [{
-          data: [30, 30, 40],
+        var gradientLegendGreen = 'linear-gradient(to right, rgba(6, 185, 157, 1), rgba(132, 217, 210, 1))';
+        var SalesedQuantity = $('#txtSalesedQuantity').val();
+        var RemainingQuantity = $('#txtRemainingQuantity').val();
+        var trafficChartData = {
+            datasets: [{
+                data: [SalesedQuantity, RemainingQuantity],
           backgroundColor: [
             gradientStrokeBlue,
             gradientStrokeGreen,
@@ -482,9 +463,8 @@
     
         // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: [
-          'Search Engines',
-          'Direct Click',
-          'Bookmarks Click',
+          'Phần trăm sản phẩm đã bán',
+          'Phần trăm sản phẩm còn lại'
         ]
       };
       var trafficChartOptions = {
@@ -501,11 +481,14 @@
               text.push('<li><span class="legend-dots" style="background:' + 
               trafficChartData.datasets[0].legendColor[i] + 
                           '"></span>'); 
-              if (trafficChartData.labels[i]) { 
-                  text.push(trafficChartData.labels[i]); 
+              if (trafficChartData.labels[i] == "Sản phẩm đã bán") {
+                  text.push(trafficChartData.labels[i]);
+                  text.push('<span class="float-right">' + SalesedQuantity + "%" + '</span>');
               }
-              text.push('<span class="float-right">'+trafficChartData.datasets[0].data[i]+"%"+'</span>')
-              text.push('</li>'); 
+              else {
+                  text.push(trafficChartData.labels[i]);
+                  text.push('<span class="float-right">' + RemainingQuantity + "%" + '</span>');
+              }
           } 
           text.push('</ul>'); 
           return text.join('');
