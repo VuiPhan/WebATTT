@@ -26,8 +26,6 @@ namespace BanDoTheThao.Areas.SalesMan.Controllers
         {
             return View();
         }
-
-
         [HttpGet]
         public JsonResult LoadData()
         {
