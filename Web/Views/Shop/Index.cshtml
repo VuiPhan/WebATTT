@@ -1,0 +1,87 @@
+﻿@model Web.Models.ViewModels.ProductViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section banner{
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Product Details Page</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="single-product.html">product-details</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+@section product{
+    <section class="owl-carousel" style="padding-bottom: 100px;padding-top: 100px;">
+        <div class="container">
+            @using (Html.BeginForm("Index", "Shop", FormMethod.Get))
+            {
+                <p>
+                    @Html.DropDownList("IDProductType", "Tất cả danh mục")
+                    <button style="margin-left: 50px; margin-right: 50px;" class="btn reply_btn" type="submit">Lọc dữ liệu</button>
+                </p>
+            }
+            <hr />
+            <div class="row">
+                @foreach (var item in Model.PaginatedBlogs())
+                {
+                    <!-- single product -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-product">
+                            <img class="img-fluid" src=@Url.Content("~/App_Img/product/" + @item.Image0) alt="">
+                            <div class="product-details">
+                                <h6>
+                                    @item.NameProduct
+                                </h6>
+                                <div class="price">
+                                    <h5> @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", @item.Price) ₫</h5>
+                                    <h6 class="l-through">$210.00</h6>
+                                </div>
+                                <div class="prd-bottom">
+
+                                    <a href="" class="social-info">
+                                        <span class="ti-bag"></span>
+                                        <p class="hover-text">add to bag</p>
+                                    </a>
+                                    <a href="" class="social-info">
+                                        <span class="lnr lnr-heart"></span>
+                                        <p class="hover-text">Wishlist</p>
+                                    </a>
+                                    <a href="" class="social-info">
+                                        <span class="lnr lnr-sync"></span>
+                                        <p class="hover-text">So sánh</p>
+                                    </a>
+                                    <a href="#" onclick="location.href='@Url.Action("Details", "Shop", new { id = @item.IDProduct})'" class="social-info">
+                                        <span class="lnr lnr-move"></span>
+                                        <p class="hover-text">Chi tiết</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <ul class="pagination">
+                @for (int i = 1; i <= Model.PageCount(); i++)
+                {
+                    <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </section>
+}
+

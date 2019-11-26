@@ -1,0 +1,109 @@
+﻿@model Web.Models.Data.DetailOrder
+
+@{
+    ViewBag.Title = "ViewOrders";
+    Layout = "~/Areas/SalesMan/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/plugin/mustache.js"></script>
+<script src="~/Scripts/plugin/jquery.twbsPagination.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">*@
+
+
+<script src="~/Scripts/Controller/ViewOrderController.js"></script>
+
+<div class="card">
+    <div class="card-body">
+
+        <h4 class="card-title">Quản lý đơn hàng (Đơn hàng chưa giao)</h4>
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active btnstatus" data-status="0" data-statusa="0" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Chưa thanh toán</a>
+                <a class="nav-item nav-link btnstatus" data-status="0" data-statusa="1" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Chưa giao và đã thanh toán</a>
+                <a class="nav-item nav-link btnstatus" data-status="1" data-statusa="1" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Đơn hàng hoàn thành</a>
+            </div>
+        </nav>
+        <br />
+        <br />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Mã đơn đặt hàng</td>
+                    <td>Ngày đặt hàng</td>
+                    <td>Tên khách hàng</td>
+                    <td>Trạng thái giao hàng</td>
+                    <td>Thanh toán</td>
+                    <td>Thao tác</td>
+                </tr>
+            </thead>
+            <tbody id="tblData"></tbody>
+
+        </table>
+        <div id="pagination" class="pagination">
+
+        </div>
+        <script id="data-template" type="x-tmpl-mustache">
+            <tr>
+                <td>{{IDOrder}}</td>
+                <td>{{DateOrderd}}</td>
+                <td>{{NameCus}}</td>
+                <td>{{{DeliveryStatus}}}</td>
+                <td>{{{Payed}}}</td>
+                <td>
+                    <button id="btn-Edit" class="btn btn-primary" data-id="{{IDOrder}}">Duyệt đơn hàng</button>
+                </td>
+                @*<td>
+
+                        <a href="@Url.Action("BrowseOrder","Order",new { @id = "@data-id"})" data-id="{{IDOrder}}" class="btn btn-danger"></a>
+                    </td>*@
+
+            </tr>
+        </script>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="MyModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Chi tiết đơn đặt hàng</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="frmSaveData">
+                    <div class="form-group">
+                        <label for="hidIDOrder">Mã đơn hàng:</label>
+                        <input type="text" class="form-control" name="hidIDOrder" id="hidIDOrder">
+                        <input type="hidden" id="hidID" value="0" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNameCus">Tên khách hàng:</label>
+                        <input type="text" class="form-control" name="txtNameCus" id="txtNameCus">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDateOrder">Ngày đặt hàng:</label>
+                        <input type="text" class="form-control" name="txtDateOrder" id="txtDateOrder">
+                    </div>
+
+
+
+
+
+                    @*<div class="checkbox">
+                            <label><input type="checkbox" id="ckStatus">Active</label>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

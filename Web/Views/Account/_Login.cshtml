@@ -1,0 +1,19 @@
+﻿@model Web.Models.ViewModels.LoginVM
+
+    <div class="login_form_inner">
+        <h3>Log in to enter</h3>
+        @using (Html.BeginForm("LogIn", "Account", FormMethod.Post, new { @class = "row login_form" }))
+        {
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+            <div class="col-md-12 form-group">
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Tên đăng nhập"})
+            </div>
+            <div class="col-md-12 form-group">
+                @Html.PasswordFor(m => m.PassWord, new { @class = "form-control", @placeholder = "Mật khẩu" })
+            </div>
+            <div class="col-md-12 form-group">
+                <button type="submit" class="primary-btn">Đăng nhập</button>
+                <a href="#">Quên mật khẩu?</a>
+            </div>
+        }
+    </div>

@@ -1,0 +1,29 @@
+﻿@model Web.Models.Data.Member
+
+@using (Html.BeginForm("BillDetails", "Checkout", FormMethod.Post, new { @class = "row contact_form", @novalidate = "novalidate" }))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+    @Html.HiddenFor(m => m.IDMember)
+    @Html.HiddenFor(m => m.UserName)
+    @Html.HiddenFor(m => m.PassWord)
+
+    <div class="col-md-6 form-group p_star">
+        <label for="Ten">Họ và tên</label>
+        @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+    </div>
+    <div class="col-md-6 form-group p_star">
+        <label for="DiaChi">Địa chỉ</label>
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+    </div>
+    <div class="col-md-6 form-group p_star">
+        <label for="SDT">Số điện thoại</label>
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+    </div>
+    <div class="col-md-6 form-group p_star">
+        <label for="Email">Địa chỉ Email</label>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email" })
+    </div>
+    <div class="col-md-12 form-group">
+        <button type="submit" class="primary-btn">Cập nhật</button>
+    </div>
+}

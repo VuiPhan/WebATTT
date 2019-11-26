@@ -16,19 +16,18 @@ namespace Web.Models.Data
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int IDCus { get; set; }
 
         [StringLength(100)]
         public string NameCus { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string AddressCus { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string EmailCus { get; set; }
 
-        [StringLength(255)]
+        [StringLength(10)]
         public string PhoneCus { get; set; }
 
         public int? IDMember { get; set; }

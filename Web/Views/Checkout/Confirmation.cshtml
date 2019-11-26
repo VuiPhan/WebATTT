@@ -1,0 +1,105 @@
+﻿@model Web.Models.ViewModels.OrderVM
+@{
+    ViewBag.Title = "Confirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!-- Start Banner Area -->
+@section banner{
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Confirmation</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="category.html">Confirmation</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<!-- End Banner Area -->
+<!--================Order Details Area =================-->
+<section class="order_details section_gap">
+    <div class="container">
+        <div class="row order_d_inner">
+            <div class="col-lg-6">
+                <div class="details_item">
+                    <h4>Thông tin đơn hàng</h4>
+                    <ul class="list">
+                        <li><a style="pointer-events: none;" href="#"><span>Mã hóa đơn</span> : @Model.IDOrder</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Ngày đặt hàng</span> : @Model.OrderedDate</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Tổng cộng</span> : @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", Model.TotalMoney) ₫</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Tình trạng</span> : @Model.Status</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="details_item">
+                    <h4>Thông tin người đặt</h4>
+                    <ul class="list">
+                        <li><a style="pointer-events: none;" href="#"><span>Tên</span> : @Model.FullName</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Email</span> : @Model.Email</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Địa chỉ</span> : @Model.Address </a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Số điện thoại</span> :@Model.PhoneNumber</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="order_details_table">
+            <h2>Chi tiết đơn hàng</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sản phẩm</th>
+                            <th scope="col">Đơn giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Tổng tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.carts)
+                        {
+                            <tr>
+                                <td>
+                                    <p>@item.NameProduct</p>
+                                </td>
+                                <td>
+                                    <p>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", item.Price) ₫</p>
+                                </td>
+                                <td>
+                                    <h5>x @item.Amount</h5>
+                                </td>
+                                <td>
+                                    <p>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", item.TotalMoney) ₫</p>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td>
+                                <h4>Tổng cộng</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <p>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", Model.TotalMoney) ₫</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--================End Order Details Area =================-->

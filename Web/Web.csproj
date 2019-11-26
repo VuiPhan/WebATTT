@@ -233,6 +233,12 @@
     <Content Include="Content\excels\demo.xls" />
     <Content Include="Content\excels\demo1.xls" />
     <Content Include="Content\excels\mydemo.xls" />
+    <Content Include="Areas\SalesMan\Views\web.config" />
+    <Content Include="Areas\SalesMan\Views\Order\BrowseOrder.cshtml" />
+    <Content Include="Areas\SalesMan\Views\Order\TestPagging.cshtml" />
+    <Content Include="Areas\SalesMan\Views\Order\ViewOrders.cshtml" />
+    <Content Include="Areas\SalesMan\Views\Order\XoaDi.cshtml" />
+    <Content Include="Areas\SalesMan\Views\Shared\_Layout.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Resources\Admin\css\style.css" />
     <Content Include="Resources\Admin\images\dashboard\circle.png" />
@@ -565,6 +571,7 @@
     <Content Include="Scripts\controller\memberController.js" />
     <Content Include="Scripts\controller\producerController.js" />
     <Content Include="Scripts\controller\supplierController.js" />
+    <Content Include="Scripts\controller\ViewOrderController.js" />
     <Content Include="Scripts\controller\warehouseController.js" />
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.0.js" />
@@ -1236,6 +1243,7 @@
     <Content Include="Scripts\plugins\ckfinder\_samples\skin_v1.html" />
     <Content Include="Scripts\plugins\ckfinder\_samples\standalone.html" />
     <Content Include="Scripts\plugins\ckfinder\_samples\standalone_v1.html" />
+    <Content Include="Scripts\StyleSheet1.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1250,17 +1258,27 @@
     <Compile Include="Areas\Admin\Controllers\StatisticalController.cs" />
     <Compile Include="Areas\Admin\Controllers\SupplierController.cs" />
     <Compile Include="Areas\Admin\Controllers\WareHouseController.cs" />
+    <Compile Include="Areas\SalesMan\Controllers\Employee.cs" />
+    <Compile Include="Areas\SalesMan\Controllers\OrderController.cs" />
+    <Compile Include="Areas\SalesMan\SalesManAreaRegistration.cs" />
     <Compile Include="Areas\WarehouseStaff\Controllers\CategoryController.cs" />
     <Compile Include="Areas\WarehouseStaff\Controllers\ProducerController.cs" />
     <Compile Include="Areas\WarehouseStaff\Controllers\ProductController.cs" />
     <Compile Include="Areas\WarehouseStaff\Controllers\SupplierController.cs" />
     <Compile Include="Areas\WarehouseStaff\Controllers\WarehouseController.cs" />
     <Compile Include="Areas\WarehouseStaff\WarehouseStaffAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginSystemController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Data\Authority.cs" />
     <Compile Include="Models\Data\Authority_MemType.cs" />
+    <Compile Include="Models\Data\Comment.cs" />
     <Compile Include="Models\Data\Customer.cs" />
     <Compile Include="Models\Data\DetailImport.cs" />
     <Compile Include="Models\Data\DetailOrder.cs" />
@@ -1284,11 +1302,17 @@
     <Compile Include="Models\DB\StatisticalDao.cs" />
     <Compile Include="Models\DB\SupplierDao.cs" />
     <Compile Include="Models\DB\WareHouseDao.cs" />
+    <Compile Include="Models\ViewModels\AccountVM.cs" />
+    <Compile Include="Models\ViewModels\CheckoutVM.cs" />
+    <Compile Include="Models\ViewModels\CommentVM.cs" />
     <Compile Include="Models\ViewModels\DetailImportModel.cs" />
+    <Compile Include="Models\ViewModels\HomeVM.cs" />
     <Compile Include="Models\ViewModels\MaHoa.cs" />
+    <Compile Include="Models\ViewModels\OrderVM.cs" />
     <Compile Include="Models\ViewModels\ProducerVM.cs" />
     <Compile Include="Models\ViewModels\ProductTypeVM.cs" />
     <Compile Include="Models\ViewModels\ProductVM.cs" />
+    <Compile Include="Models\ViewModels\ShopVM.cs" />
     <Compile Include="Models\ViewModels\StatisticalModel.cs" />
     <Compile Include="Models\ViewModels\SupplierVM.cs" />
     <Compile Include="Models\ViewModels\WarehouseVM.cs" />
@@ -1305,6 +1329,23 @@
     <Content Include="Scripts\plugins\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Scripts\plugins\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\plugins\ckfinder\userfiles\.htaccess" />
+    <Content Include="Views\Shared\NavPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\_Login.cshtml" />
+    <Content Include="Views\Account\_Update.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Checkout\Confirmation.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\_BillDetails.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shop\CartPartial.cshtml" />
+    <Content Include="Views\Shop\Details.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Shop\Similar.cshtml" />
+    <Content Include="Views\Shop\_Comments.cshtml" />
+    <Content Include="Views\LoginSystem\Login.cshtml" />
+    <Content Include="Views\LoginSystem\LoiPhanQuyen.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1316,8 +1357,8 @@
     <Folder Include="App_Img\producer\" />
     <Folder Include="App_Img\product\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\SalesMan\Models\" />
     <Folder Include="Areas\WarehouseStaff\Models\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

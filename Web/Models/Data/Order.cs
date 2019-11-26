@@ -26,7 +26,7 @@ namespace Web.Models.Data
 
         public DateTime? DeliveryDate { get; set; }
 
-        public DateTime? DeleveriedDate { get; set; }
+        public DateTime? DeliveredDate { get; set; }
 
         public decimal? TotalMoney { get; set; }
 
@@ -34,9 +34,13 @@ namespace Web.Models.Data
 
         public int? IDCus { get; set; }
 
+        public int? IDMember { get; set; }
+
         public virtual Customer Customer { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailOrder> DetailOrders { get; set; }
+
+        public virtual StatusOrder StatusOrder { get; set; }
     }
 }

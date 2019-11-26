@@ -1,0 +1,11 @@
+﻿<a href="@Url.Action("Index","Cart")">
+    <span class="ti-bag"></span>
+    <span style="position: absolute; width: 15px; left: 6px; height: 15px; line-height: 15px; background-color: #191919;
+                             color: #fff; top: 15px; text-align: center; font-size: 10px;
+                             -webkit-border-radius: 100%; -moz-border-radius: 100%; border-radius: 100%;">
+        @ViewBag.Count
+    </span>
+    <span>
+        @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", @ViewBag.Total) ₫
+    </span>
+</a>

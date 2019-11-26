@@ -9,6 +9,13 @@ namespace Web.Models.Data
     [Table("Product")]
     public partial class Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Product()
+        {
+            Comments = new HashSet<Comment>();
+            DetailOrders = new HashSet<DetailOrder>();
+        }
+
         [Key]
         public int IDProduct { get; set; }
 
@@ -50,6 +57,12 @@ namespace Web.Models.Data
         public int? IDSupplier { get; set; }
 
         public int? RemainingQuantity { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailOrder> DetailOrders { get; set; }
 
         public virtual Producer Producer { get; set; }
 
