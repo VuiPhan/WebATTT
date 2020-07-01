@@ -60,6 +60,8 @@ namespace Web.Controllers
         public ActionResult LogOut()
         {
             Session["Account"] = null;
+            Session["Forgot"] = null;
+            Session["Register"] = null;
             return RedirectToAction("Index");
         }        
         public JsonResult Register(Member model)
@@ -168,6 +170,37 @@ namespace Web.Controllers
                     isRedirect = false
                 });
             }            
+            return Json(new
+            {
+                redirectUrl = Url.Action("TwoFac", "Account"),
+                isRedirect = true
+            });
+        }
+        public JsonResult LoginByPhoneIsCheck()
+        {
+            try
+            {
+                Member member = (Member)Session["Account"];
+                var khachHang = db.Members.SingleOrDefault(x => x.IDMember == member.IDMember);
+                Session["Account"] = khachHang;
+                if (khachHang.IsLoginByPhone == true)
+                {
+                    khachHang.IsLoginByPhone = false;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    khachHang.IsLoginByPhone = true;
+                    db.SaveChanges();
+                }
+            }
+            catch
+            {
+                return Json(new
+                {
+                    isRedirect = false
+                });
+            }
             return Json(new
             {
                 redirectUrl = Url.Action("TwoFac", "Account"),
@@ -547,19 +580,61 @@ namespace Web.Controllers
             try
             {
                 var khachHang = db.Members.Where(x => x.PhoneNumber.Equals(phone) && x.PassWord != null).SingleOrDefault();
-                 
-                if(khachHang == null)
+
+
+                if (khachHang != null && khachHang.IsLoginByPhone == false)
+                {
+                    string message = "Tài khoản hiện thời không hỗ trợ đăng nhập qua" +
+                        " điện thoại, vui lòng đăng nhập bằng cách khác. Và thiết lập đăng nhập qua điện thoại";
+                    return Json(new
+                    {
+                        isRedirect = -2,
+                        message = message
+                    });
+                }
+                if (khachHang == null)
+                {
+                    return Json(new
+                    {
+                        isRedirect = -1 // Gửi thất bại Không tìm thấy số điện thoại
+                    });
+                }
+                Member member = db.Members.Where(x => x.PhoneNumber == phone).SingleOrDefault();
+                Session["MemberLoginByPhone"] = member;
+                member.TimeSendOTPLoginByPhone = DateTime.Now;
+                member.NumberOfTries = 2;
+                Random rd = new Random();
+                member.OTPLoginByPhone = rd.Next(100000, 999999).ToString();
+                db.SaveChanges();
+                return Json(new
+                {
+                    isRedirect = 1 // Gửi OTP thành công
+                });
+                
+                // SendMail(khachHang.FullName, Email);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    isRedirect = false
+                });
+            }
+        }
+        public JsonResult LoginByPhone(string OTP)
+        {
+            try
+            {
+                Member MemberLoginByPhone = (Member)Session["MemberLoginByPhone"];
+                var Member = db.Members.Where(p=>p.IDMember == MemberLoginByPhone.IDMember && p.OTPLoginByPhone == OTP).SingleOrDefault();
+                Session["Account"] = Member;
+                if (Member.IDMemType == 1)
                 {
                     return Json(new
                     {
                         isRedirect = false
                     });
                 }
-
-
-
-                Session["MemberLoginByPhone"] = db.Members.Where(x => x.UserName == khachHang.UserName).SingleOrDefault();
-               // SendMail(khachHang.FullName, Email);
             }
             catch
             {
@@ -571,34 +646,7 @@ namespace Web.Controllers
 
             return Json(new
             {
-                redirectUrl = Url.Action("Forgot", "Account"),
-                isRedirect = true
-            });
-        }
-
-
-
-
-
-        public JsonResult LoginByPhone(string Email)
-        {
-            try
-            {
-                var khachHang = db.Members.Where(x => x.Email.Equals(Email) && x.PassWord != null).SingleOrDefault();
-                Session["Forgot"] = db.Members.Where(x => x.UserName == khachHang.UserName).SingleOrDefault();
-                SendMail(khachHang.FullName, Email);
-            }
-            catch
-            {
-                return Json(new
-                {
-                    isRedirect = false
-                });
-            }
-
-            return Json(new
-            {
-                redirectUrl = Url.Action("Forgot", "Account"),
+                redirectUrl = Url.Action("Index", "Account"),
                 isRedirect = true
             });
         }

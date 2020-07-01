@@ -30,13 +30,23 @@
                 <br />
                 @if (Model.TwoFactor != 1)
                 {
-                    <h4 style="color: darkcyan">Đã bật</h4>
+                <h4 style="color: darkcyan">Đã bật xác thực hai yếu tố qua Email</h4>
                     <button id="turnoff"> Tắt xác thực 2 yếu tố</button>
                 }
                 else
                 {
-                    <h4>Đã tắt</h4>
+                    <h4>Đã tắt xác thực hai yếu tố qua Email</h4>
                     <button id="turnon"> Bật xác thực 2 yếu tố</button>
+                }
+                @if (Model.IsLoginByPhone == true)
+                {
+                    <h4 style="color: darkcyan">Đã bật chức năng đăng nhập bằng số điện thoại</h4>
+                    <button id="turnoffLoginByPhone"> Tắt đăng nhập qua số điện thoại</button>
+                }
+                else
+                {
+                    <h4>Đã tắt chức năng đăng nhập bằng số điện thoại</h4>
+                    <button id="turnonLoginByPhone"> Bật đăng nhập qua số điện thoại</button>
                 }
             </div>
         </div>
@@ -73,6 +83,42 @@
             }
         })
     })
+
+    $("#turnoffLoginByPhone").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Account/LoginByPhoneIsCheck",
+            success: function (json) {
+                if (json.isRedirect) {
+                    window.location.href = json.redirectUrl;
+                }
+                else {
+                    alert("Có lỗi xảy ra!!!");
+                }
+            }
+        })
+    })
+
+    $("#turnonLoginByPhone").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Account/LoginByPhoneIsCheck",
+            success: function (json) {
+                if (json.isRedirect) {
+                    window.location.href = json.redirectUrl;
+                }
+                else {
+                    alert("Có lỗi xảy ra!!!");
+                }
+            }
+        })
+    })
+
+
+
+
+
+
 </script>
 
 

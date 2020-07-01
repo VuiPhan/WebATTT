@@ -64,6 +64,10 @@ namespace Web.Models.Data
         public bool? IsLock { get; set; }
 
 
+        public bool? IsLoginByPhone { get; set; }
+        public string OTPLoginByPhone { get; set; }
+        public DateTime? TimeSendOTPLoginByPhone { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
 
