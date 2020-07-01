@@ -1,0 +1,235 @@
+﻿@model Web.Models.ViewModels.OrderVM
+@{
+    ViewBag.Title = "Confirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@* Demo thanh giao hang *@
+@*<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+@*<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>*@
+<script src="~/Scripts/bootbox.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Scripts/ThanhGiaoHang.css" rel="stylesheet" />
+@* rao` lai *@
+
+<!-- Start Banner Area -->
+@section banner{
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Confirmation</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/Home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="#">Theo dõi tình trạng</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<!-- End Banner Area -->
+<!--================Order Details Area =================-->
+<br />
+<br />
+<div class="row shop-tracking-status col-md-12" style="width:1500px;position:center!important;margin:20px; ;background-color:azure; margin-left: 190px;">
+
+    <div class="col-md-12">
+        <div class="well">
+            <div class="order-status">
+                <div class="order-status-timeline">
+                    <!-- class names: c0 c1 c2 c3 and c4 -->
+                    <div id="changeStatus" class="order-status-timeline-completion"></div>
+                </div>
+                <div class="image-order-status image-order-status-new active img-circle">
+                    <span class="status">Ngày đặt hàng</span>
+                    <span class="status" style="margin-top:20px; margin-left:10px;">@Model.OrderedDate</span>
+
+                    <div class="icon"></div>
+                </div>
+                <div class="image-order-status image-order-status-active active img-circle">
+                    <span class="status">Ngày xác nhận</span>
+                    <span class="status" style="margin-top:20px;">@Model.ConfirmDate</span>
+                    <div class="icon"></div>
+                </div>
+                <div class="image-order-status image-order-status-intransit active img-circle">
+                    <span class="status">Giao cho ĐVVC</span>
+                    <span class="status" style="margin-top:20px;">@Model.DeliveryDate</span>
+                    <div class="icon"></div>
+                </div>
+                <div class="image-order-status image-order-status-delivered active img-circle">
+                    <span class="status">Ngày giao hàng</span>
+                    <span class="status" style="margin-top:20px;">@Model.DeliveredDate</span>
+                    <div class="icon"></div>
+                </div>
+                <div class="image-order-status image-order-status-completed active img-circle">
+                    <span class="status">Hoàn thành </span>
+                    <div class="icon"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<section class="order_details section_gap" style="margin-top: -50px;">
+    <div class="container">
+        <div class="row order_d_inner">
+            <div class="col-lg-6">
+                <div class="details_item">
+
+                    <h4>Thông tin đơn hàng</h4>
+                    <ul class="list">
+                        <li><a style="pointer-events: none;" href="#"><span>Mã hóa đơn</span> : @Model.IDOrder</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Ngày đặt hàng</span> : @Model.OrderedDate</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Ngày xác nhận</span> : @Model.ConfirmDate</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Đã giao cho ĐVVC</span> : @Model.DeliveryDate</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Đơn hàng đã giao</span> : @Model.DeliveredDate</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Tổng cộng</span> : @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", Model.TotalMoney) ₫</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Tình trạng</span> : <span id="statusOrder" style="color:black">@Model.Status </span></a></li>
+
+
+                    </ul>
+
+                    <script>
+                        var model = @Html.Raw(Json.Encode(Model));
+                        var s = @Html.Raw(Json.Encode(Model.Status));
+
+                        if (s == "Chưa xác nhận") {
+                            $("#changeStatus").addClass("c1");
+                        }
+                        if (s == "Chờ lấy hàng") {
+                            $("#changeStatus").addClass("c2");
+                        }
+                        if (s == "Đang giao") {
+                            $("#changeStatus").addClass("c3");
+                        }
+                        if (s == "Đã giao thành công") {
+                            $("#changeStatus").addClass("c4");
+                        }
+
+                    </script>
+                </div>
+            </div>
+            <br />
+            <div class="col-lg-6">
+                <div class="details_item">
+                    <h4>Thông tin người đặt</h4>
+                    <ul class="list">
+                        <li><a style="pointer-events: none;" href="#"><span>Tên</span> : @Model.FullName</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Email</span> : @Model.Email</a></li>
+                        <li><a style="pointer-events: none;" href="#"><span>Địa chỉ</span> : @Model.Address  </a></li>
+
+                        <li><a style="pointer-events: none;" href="#"><span>Số điện thoại</span> :@Model.PhoneNumber</a></li>
+                        <li><a style="pointer-events: none; color:#ffd800" href="#">Nếu bạn muốn thay đổi thông tin gì hãy liên lạc Hotline 18008198 </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="order_details_table">
+            <h2>Chi tiết đơn hàng</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sản phẩm</th>
+                            <th scope="col">Đơn giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Tổng tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.carts)
+                        {
+                            <tr>
+                                <td>
+                                    <p>@item.NameProduct</p>
+                                </td>
+                                <td>
+                                    <p>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", item.Price) ₫</p>
+                                </td>
+                                <td>
+                                    <h5>x @item.Amount</h5>
+                                </td>
+                                <td>
+                                    <p>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", item.TotalMoney) ₫</p>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td>
+                                <h4>Tổng cộng</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td></td>
+                            <td>
+                                <p>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", Model.TotalMoney) ₫</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+    @if (Model.Status != "Chưa xác nhận")
+    {
+        <p id="message" style="color:orangered; margin-top:20px; margin-left:700px!important;">Đơn hàng đã được duyệt, nếu bạn thực sự muốn hủy hãy liên lạc Hotline :19008198 của chúng tôi</p>
+
+    }
+    else
+    {
+        <button id="btn-Delete" class="btn btn-danger" style="margin-left:1200px!important; margin-top:20px;" data-id="@Model.IDOrder">Hủy đơn hàng</button>
+    }
+
+
+
+
+</section>
+<script>
+    $('#btn-Delete').off('click').on('click', function () {
+        //bootbox.alert("This is the default alert!");
+
+        var id = $(this).data('id');
+        const status = $(this).data('status');
+        bootbox.confirm("Bạn muốn hủy đơn hàng này?", function (result) {
+            if (result)
+                $.ajax({
+                    url: '/Checkout/BrowseStatusOrder',
+                    data: {
+                        id: id
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.status == true) {
+                            bootbox.alert("Đã chuyển trạng thái thành công", function () {
+                                //location.reload();
+                                document.getElementById("statusOrder").innerHTML = "Đã hủy";
+                                $("#btn-Delete").hide();
+                                $("#message").show();
+                            });
+                        }
+                        else {
+                            bootbox.alert(response.mess);
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+
+                    }
+                });
+        });
+
+    });
+
+
+
+
+</script>
+
+
+<!--================End Order Details Area =================-->

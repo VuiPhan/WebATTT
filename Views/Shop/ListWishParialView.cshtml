@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Web.Models.Data.Product>
+
+
+@if (Model.Count() < 4)
+{
+    for (int i = 0; i < Model.Count(); i++)
+    {
+        <!-- single product -->
+        <div class="col-lg-3 col-md-6">
+            <div class="single-product">
+                <img class="img-fluid" src=@Url.Content("~/App_Img/product/" + @Model.ElementAtOrDefault(i).Image0) alt="">
+                <div class="product-details">
+                    <h6>
+                        @Model.ElementAtOrDefault(i).NameProduct
+                    </h6>
+                    <div class="price">
+                        <h6> @Model.ElementAtOrDefault(i).Price</h6>
+                        <h6 class="l-through">$210.00</h6>
+                    </div>
+                    <div class="prd-bottom">
+
+                        <a class="social-info btn_submit" data-id="@Model.ElementAtOrDefault(i).IDProduct">
+                            <span class="ti-bag"></span>
+                            <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                            <span class="lnr lnr-heart"></span>
+                            <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                            <span class="lnr lnr-sync"></span>
+                            <p class="hover-text">So sánh</p>
+                        </a>
+                        <a href="#" onclick="location.href='@Url.Action("Details", "Shop", new { id = @Model.ElementAtOrDefault(i).IDProduct})'" class="social-info">
+                            <span class="lnr lnr-move"></span>
+                            <p class="hover-text">Chi tiết</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    for (int i = 0; i < 4; i++)
+    {
+        <!-- single product -->
+        <div class="col-lg-3 col-md-6">
+            <div class="single-product">
+                <img class="img-fluid" src=@Url.Content("~/App_Img/product/" + @Model.ElementAtOrDefault(i).Image0) alt="">
+                <div class="product-details">
+                    <h6>
+                        @Model.ElementAtOrDefault(i).NameProduct
+                    </h6>
+                    <div class="price">
+                        <h6> @Model.ElementAtOrDefault(i).Price</h6>
+                        <h6 class="l-through">$210.00</h6>
+                    </div>
+                    <div class="prd-bottom">
+
+                        <a class="social-info btn_submit" data-id="@Model.ElementAtOrDefault(i).IDProduct">
+                            <span class="ti-bag"></span>
+                            <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                            <span class="lnr lnr-heart"></span>
+                            <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                            <span class="lnr lnr-sync"></span>
+                            <p class="hover-text">So sánh</p>
+                        </a>
+                        <a href="#" onclick="location.href='@Url.Action("Details", "Shop", new { id = @Model.ElementAtOrDefault(i).IDProduct})'" class="social-info">
+                            <span class="lnr lnr-move"></span>
+                            <p class="hover-text">Chi tiết</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+}
+<script>
+    $(".btn_submit").on("click", function () {
+        var pathname = window.location.pathname; // Returns path only (/path/example.html)
+        console.log(pathname);
+
+        //var IdProduct = $("#MyId").val();
+        var IdProduct = $(this).data('id');
+        var Amount = 1;
+        $.ajax({
+            url: "/Shop/AddToCart",
+            method: "POST",
+            data: { IdProduct: IdProduct, Amount: Amount },
+            success: function (json) {
+                if (json.status && pathname==="/Cart") {
+                    var x = json.TotalMoney1;
+                    var y = json.Quanlity1;
+                    document.getElementById("Total1").innerHTML = json.TotalMoney1;
+                    document.getElementById("Count").innerHTML = json.Quanlity1;
+                    location.reload();
+                }
+                if (json.status) {
+                    var x = json.TotalMoney1;
+                    var y = json.Quanlity1;
+                    document.getElementById("Total1").innerHTML = json.TotalMoney1;
+                    document.getElementById("Count").innerHTML = json.Quanlity1;
+                }
+                else {
+                    //alert('Bạn đã thêm sản phẩm vào giỏ hàng thành công');
+                }
+            }
+        });
+
+    });
+</script>
+
+

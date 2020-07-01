@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "ConfLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section banner{
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Trang tài khoản</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/Home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="/Account">Trang tài khoản</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section class="login_box_area section_gap">
+    <div class="container">
+        <div class="card-body">
+            <h3>Nhập mã code để đăng nhập</h3>
+            <h5 id="success" style="color: deepskyblue"></h5>
+            <br />
+            <div id="countdown" style="vertical-align:middle;height:60px;text-align:center; font-size:30px; color:red;"></div>
+            <label>Nhập mã code</label>
+            <label>@ViewBag.Infomation</label>
+            <label id="notifi" style="color: firebrick"></label>
+            <input type="password" id="newcode" class="form-control" />
+            <br />
+
+            <div style="display: flex;">
+                <div class="form-group">
+                    <button class="primary-btn" id="seccess">Xác nhận</button>
+                </div>
+                <div class="form-group" style="margin-left: 5px;">
+                    <button class="primary-btn" id="reSendOTP">Gửi lại OTP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var timeleft = 30;
+
+    $("#seccess").click(function () {
+        var code = $("#newcode").val();
+        $.ajax({
+            type: "POST",
+            url: "/LoginSystem/RequestCode?code=" + code,
+            success: function (json) {
+                if (json.isRedirect) {
+                    window.location.href = json.redirectUrl;
+                }
+                else {
+                    debugger;
+                    if (json.NumberOfTries == 1000) {
+                        alert(json.mess);
+                    }
+                    else {
+                        alert("Nhập sai mã OTP bạn còn " + json.NumberOfTries + " lần thử!");
+                    }
+                }
+            }
+        })
+    })
+    $("#reSendOTP").click(function () {
+        var code = $("#newcode").val();
+        $.ajax({
+            type: "POST",
+            url: "/LoginSystem/ReSendOTP",
+            success: function (json) {
+                alert(json.mess);
+                timeleft = json.timeleft;
+            }
+        })
+    })
+    var downloadTimer = setInterval(function () {
+        if (timeleft <= 0) {
+            clearInterval(downloadTimer);
+            document.getElementById("countdown").innerHTML = "Hết hạn OTP";
+        } else {
+            document.getElementById("countdown").innerHTML = timeleft + " giây còn lại sẽ hết hạn OTP";
+        }
+        timeleft -= 1;
+    }, 1000);
+    
+   
+</script>
+

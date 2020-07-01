@@ -1,0 +1,118 @@
+﻿@model Web.Models.Data.Member
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section banner{
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Trang tài khoản</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/Home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="/Account">Trang tài khoản</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="product_description_area">
+        <div class="container">
+            <div class="card-body">
+                <h3>Thông tin tài khoản</h3>
+                <h5 id="notifi" style="color: deepskyblue"></h5>
+                @Html.HiddenFor(m => m.IDMember, new { @id = "IDMember" })
+                @Html.HiddenFor(m => m.UserName, new { @id = "UserName" })
+
+                <label style="padding-top: 20px;">Họ và tên</label>
+                @Html.TextBoxFor(m => m.FullName, new { @id = "FullName", @class = "form-control", @placeholder = "Họ và tên" })
+
+                <label style="padding-top: 20px;">Địa chỉ</label>
+                @Html.TextBoxFor(m => m.Address, new { @id = "Address", @class = "form-control", @placeholder = "Địa chỉ" })
+
+                <label style="padding-top: 20px;">Số điện thoại</label>
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @id = "PhoneNumber", @class = "form-control", @placeholder = "Số điện thoại" })
+
+                <div style="padding-top: 20px;" class="d-flex">
+                    <img style="border-radius: 50%;" src=@Url.Content("~/App_Img/profile/"+ Model.Avatar) alt="">
+                </div>
+
+                <label style="padding-top: 20px;">Ảnh đại diện</label>
+                @Html.TextBoxFor(m => m.Avatar, new { @id = "Avatar", @hidden = "hiddent", @class = "form-control", @placeholder = "Ảnh đại diện" })
+                <input type="file" class="form-control" id="file" value="Chọn tệp ảnh" />
+
+                <label style="padding-top: 20px;">Nhập mật khẩu để cập nhật thông tin</label>
+                <label style="color: orangered" id="notifii"></label>
+                @Html.PasswordFor(m => m.PassWord, new { @id = "PassWord", @Required = "", @class = "form-control", @placeholder = "Mật khẩu hiện tại" })
+
+                <button id="subm" class="primary-btn">Cập nhật</button>
+            </div>
+        </div>
+    </section>
+}
+
+<script>
+    $("#subm").click(function () {
+        var id = $("#IDMember").val();
+        var pass = $("#PassWord").val();
+        var name = $("#FullName").val();
+        var address = $("#Address").val();
+        var phone = $("#PhoneNumber").val();
+        var avatar = $("#Avatar").val();
+        $.ajax({
+            type: "Post",
+            url: "/Account/UpdateAccount?id=" + id + "&pass=" + pass + "&name=" + name + "&address=" + address + "&phone=" + phone + "&avatar=" + avatar,
+            success: function (json) {
+                if (json.isRedirect) {
+                    $("#notifi").html("Cập nhật thành công ")
+                }
+                else {
+
+                }
+            }
+        })
+    })
+
+    $("#PassWord").change(function () {
+        $("#PassWord").css('border-color', 'lightgrey');
+        var x = document.getElementById("notifii");
+        x.style.display = 'none';
+        var pa = $("#PassWord").val();
+        var use = $("#UserName").val();
+        $.ajax({
+            type: "Post",
+            url: "/Account/TestPassword?username=" + use + "&pass=" + pa,
+            success: function (json) {
+                if (!json.isRedirect) {
+                    $("#PassWord").css('border-color', 'Red');
+                    x.style.display = 'block'
+                    $("#notifii").html("Mật khẩu không chính xác");
+                }
+            }
+        })
+    })
+
+    $("#file").change(function () {
+        if (window.FormData !== undefined) {
+            var fileUpload = $('#file').get(0);
+            var file = fileUpload.files;
+            var formData = new FormData();
+            formData.append('file', file[0]);
+            $.ajax({
+                type: 'POST',
+                url: '/Account/UploadImg',
+                contentType: false, //không có header
+                processData: false, //không xử lý dữ liệu
+                data: formData,
+                success: function (urlImage) {
+                    $('#Avatar').val(urlImage);
+                },
+                error: function (err) {
+                    bootbox.alert('Có lỗi khi Upload:' + err.statusText);
+                }
+            })
+        }
+    })
+</script>

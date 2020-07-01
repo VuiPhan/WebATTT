@@ -1,0 +1,162 @@
+﻿@model Web.Models.ViewModels.AccountVM
+
+<div class="card-body">
+    <h3>Thông tin tài khoản</h3>
+    @using (Html.BeginForm("Update", "Account", FormMethod.Post, new { @class = "row login_form" }))
+    {
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+        @Html.HiddenFor(m => m.IDMember, new { @id = "IDMember" })
+        <div class="col-md-6 form-group">
+            <label>Họ và tên</label>
+            @Html.TextBoxFor(m => m.FullName, new { @Required = "", @class = "form-control", @placeholder = "Họ và tên" })
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Địa chỉ Email</label>
+            @Html.TextBoxFor(m => m.Email, new { @id = "email", @Required = "", @class = "form-control", @type = "email", @placeholder = "Email" })
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Địa chỉ</label>
+            @Html.TextBoxFor(m => m.Address, new { @Required = "", @class = "form-control", @placeholder = "Địa chỉ" })
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Số điện thoại</label>
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @Required = "", @class = "form-control", @placeholder = "Số điện thoại" })
+        </div>
+        <div class="col-md-6 form-group">
+            <div class="d-flex">
+                <img style="border-radius: 50%;" src=@Url.Content("~/App_Img/profile/"+ Model.Avatar) alt="">
+            </div>
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Tên đăng nhập</label>
+            <input type="text" disabled="disabled" class="form-control" value="@Model.UserName" />
+            @Html.TextBoxFor(m => m.UserName, new { @id = "UserName",  @hidden = "hidden", @class = "form-control", @placeholder = "Tên đăng nhập" })
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Ảnh đại diện</label>
+            @Html.TextBoxFor(m => m.Avatar, new { @Required = "", @class = "form-control", @hidden = "hidden", @placeholder = "Ảnh đại diện" })
+            <input type="file" class="form-control" id="file" value="Chọn tệp ảnh" />
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Mật khẩu (Mật khẩu hiện tại)</label>
+            @Html.PasswordFor(m => m.PassWord, new { @id = "pass", @Required = "", @class = "form-control", @placeholder = "Mật khẩu hiện tại" })
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="MatKhau">Mật khẩu (Mật khẩu mới, để trống nếu không thay đổi)</label>
+            @Html.PasswordFor(m => m.NewPassWord, new { @class = "form-control", @placeholder = "Mật khẩu mới" })
+        </div>
+        <hr />
+        <div class="form-group">
+            <button type="submit" id="subm" class="primary-btn">Cập nhật</button>
+        </div>
+        <div class="form-group">
+            <button style="margin-left: 20px;color:red; margin-top: 6px;" id="Delete">Xóa tài khoản</button>
+        </div>
+    }
+</div>
+@*Create A PopUp Modal For DeleteConfirmation*@
+
+<div class="modal fade" id="DeleteConfirmation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Xóa tài khoản</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Bạn có muốn xóa tài khoản này không?</h4>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-light" data-dismiss="modal" id="r">Hủy</a>
+                <a href="#" class="btn btn-gradient-primary mr-2" onclick="ConfirmDelete()">Xác nhận</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        if ($("#pass").val() == "")
+            document.getElementById("Delete").disabled = true;
+    });
+
+    $("#Delete").click(function () {
+        $("#DeleteConfirmation").modal("show");
+    })
+
+    var ConfirmDelete = function () {
+        var id = $("#IDMember").val();
+        $.ajax({
+            type: "POST",
+            url: "/Account/DeleteRecord?Id=" + id,
+            success: function (json) {
+                if (json.isRedirect) {
+                    window.location.href = json.redirectUrl;
+                }
+                else {
+                    alert("Có lỗi xảy ra!");
+                }
+            }
+        })
+    }
+    $("#email").change(function () {
+        $("#email").css('border-color', 'lightgrey');
+        var em = $("#email").val();
+        var us = $("#UserName").val();
+        $.ajax({
+            type: "Post",
+            url: "/Account/TestEmail?email=" + em + "&username=" + us,
+            success: function (json) {
+                if (json.isRedirect) {
+                    $("#subm").show();
+                }
+                else {
+                    $("#email").css('border-color', 'Red');
+                    $("#email").css('border-width', 'inherit');
+                    $("#subm").hide();
+                }
+            }
+        })
+    })
+    $("#pass").change(function () {
+        $("#pass").css('border-color', 'lightgrey');
+        var pa = $("#pass").val();
+        var use = $("#UserName").val();
+        $.ajax({
+            type: "Post",
+            url: "/Account/TestPassWord?username=" + use + "&pass=" + pa,
+            success: function (json) {
+                if (json.isRedirect) {
+                    document.getElementById("subm").disabled = false;
+                    document.getElementById("Delete").disabled = false;
+                }
+                else {
+                    $("#pass").css('border-color', 'Red');
+                    document.getElementById("subm").disabled = true;
+                    document.getElementById("Delete").disabled = true;
+                }
+            }
+        })
+    })
+    $("#file").change(function () {
+        if (window.FormData !== undefined) {
+            var fileUpload = $('#file').get(0);
+            var file = fileUpload.files;
+            var formData = new FormData();
+            formData.append('file', file[0]);
+            $.ajax({
+                type: 'POST',
+                url: '/Account/UploadImg',
+                contentType: false, //không có header
+                processData: false, //không xử lý dữ liệu
+                data: formData,
+                success: function (urlImage) {
+                    $('#Avatar').val(urlImage);
+                },
+                error: function (err) {
+                    bootbox.alert('Có lỗi khi Upload:' + err.statusText);
+                }
+            })
+        }
+    })
+</script>

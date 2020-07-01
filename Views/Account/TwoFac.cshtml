@@ -1,0 +1,78 @@
+﻿@model Web.Models.Data.Member
+@{
+    ViewBag.Title = "TwoFac";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section banner{
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Trang tài khoản</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/Home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="/Account">Trang tài khoản</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section class="login_box_area section_gap">
+    <div class="container">
+        <div class="tab-content">
+            <div class="tab-pane fade active show">
+                <h3>Xác thực hai yếu tố</h3>
+                <h5>Chúng tôi sẽ yêu cầu mã xác minh thông qua Email nếu nhận thấy thông tin đăng nhập từ một trình duyệt không được nhận dạng.</h5>
+                <h5 id="success" style="color: deepskyblue"></h5>
+                <br />
+                @if (Model.TwoFactor != 1)
+                {
+                    <h4 style="color: darkcyan">Đã bật</h4>
+                    <button id="turnoff"> Tắt xác thực 2 yếu tố</button>
+                }
+                else
+                {
+                    <h4>Đã tắt</h4>
+                    <button id="turnon"> Bật xác thực 2 yếu tố</button>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $("#turnoff").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Account/TwoFactor",
+            success: function (json) {
+                if (json.isRedirect) {
+                    window.location.href = json.redirectUrl;
+                }
+                else {
+                    alert("Mã OTP không chính xác, vui lòng xem lại!");
+                }
+            }
+        })
+    })
+
+    $("#turnon").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Account/TwoFactor",
+            success: function (json) {
+                if (json.isRedirect) {
+                    window.location.href = json.redirectUrl;
+                }
+                else {
+                    alert("Mã OTP không chính xác, vui lòng xem lại!");
+                }
+            }
+        })
+    })
+</script>
+
+

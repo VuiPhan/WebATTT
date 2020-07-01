@@ -1,0 +1,107 @@
+﻿@model Web.Models.ViewModels.AccountVM
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section banner{
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Trang tài khoản</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/Home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="/Account">Trang tài khoản</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section class="login_box_area section_gap">
+    <div class="container">
+        <div class="card-body">
+            <h3>Xóa tài khoản</h3>
+            <br />
+            @Html.HiddenFor(m => m.IDMember, new { @id = "IDMember" })
+            @Html.HiddenFor(m => m.UserName, new { @id = "user" })
+            <div class="d-flex" style="float: left">
+                <img style="border-radius: 50%;" src=@Url.Content("~/App_Img/profile/"+ Model.Avatar) alt="">
+            </div>
+            <h4 style="padding-top: 50px;padding-left: 150px;padding-bottom: 50px;"> @Html.DisplayFor(m => m.FullName)</h4>
+
+            <br />
+            <h4>Vui lòng nhập lại mật khẩu để tiếp tục</h4>
+            <br />
+            <h5 id="notifii" style="color: firebrick"></h5>
+            @Html.PasswordFor(m => m.PassWord, new { @id = "pass", @Required = "", @class = "form-control", @placeholder = "Mật khẩu hiện tại" })
+            <hr />
+            <div class="form-group">
+                <button class="primary-btn" id="Delete">Xóa tài khoản</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="DeleteConfirmation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Xóa tài khoản</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Bạn có muốn xóa tài khoản này không?</h4>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-light" data-dismiss="modal" id="r">Hủy</a>
+                <a href="#" class="btn btn-gradient-primary mr-2" onclick="ConfirmDelete()">Xác nhận</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#pass").change(function () {
+        $("#pass").css('border-color', 'lightgrey');
+        var pa = $("#pass").val();
+        var us = $("#user").val();
+        var x = document.getElementById("notifii");
+        x.style.display = 'none';
+        $.ajax({
+            type: "Post",
+            url: "/Account/TestPassword?username=" + us + "&pass=" + pa,
+            success: function (json) {
+                if (!json.isRedirect) {
+                    $("#pass").css('border-color', 'Red');
+                    x.style.display = 'block'
+                    $("#notifii").html("Mật khẩu không chính xác");
+                }
+            }
+        })
+    })
+
+
+    $("#Delete").click(function () {
+        $("#DeleteConfirmation").modal("show");
+    })
+
+    var ConfirmDelete = function () {
+        var id = $("#IDMember").val();
+        var pass = $('#pass').val();
+        $.ajax({
+            type: "POST",
+            url: "/Account/DeleteRecord?Id=" + id + "&Pass=" + pass,
+            success: function (json) {
+                if (json.isRedirect) {
+                    window.location.href = json.redirectUrl;
+                }
+                else {
+                    alert("Có lỗi xảy ra!");
+                }
+            }
+        })
+    }
+</script>
+

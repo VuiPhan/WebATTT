@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Conf";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section banner{
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Trang tài khoản</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/Home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="/Account">Trang tài khoản</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section class="login_box_area section_gap">
+    <div class="container">
+        <div class="card-body">
+            <h3>Nhập mã code để hoàn tất đăng kí</h3>
+            <h5 id="success" style="color: deepskyblue"></h5>
+            <br />
+            <label>Nhập mã code</label>
+            <label id="notifi" style="color: firebrick"></label>
+            <input type="password" id="newcode" class="form-control" />
+            <br />
+            <div class="form-group">
+                <button class="primary-btn" id="seccess">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $("#seccess").click(function () {
+        var code = $("#newcode").val();
+        $.ajax({
+            type: "POST",
+            url: "/Account/RequestCode?code=" + code,
+            success: function (json) {
+                if (json.isRedirect) {
+                    window.location.href = json.redirectUrl;
+                }
+                else {
+                    alert("Có lỗi xảy ra!");
+                }
+            }
+        })
+    })
+
+</script>
+

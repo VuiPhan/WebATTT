@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+    <script src="~/Scripts/bootbox.min.js"></script>
+    <script src="~/Scripts/jquery.twbsPagination.min.js"></script>
+    <script src="~/Scripts/mustache.min.js"></script>
+    <script src="~/Scripts/controller/warehouseController.js"></script>
+}
+<!-- Page Heading -->
+<head>
+    <title>Admin | WareHouse</title>
+</head>
+<!-- DataTales Example -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary col-md-12">Danh sách kho hàng</h6>
+            </div>
+            <div class="card-body" style="padding-top:10px">
+                <div class="table-striped">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <button id="btnAddNew" class="btn-light" style="padding:6px"><i class="mdi mdi-plus-circle"></i>Thêm kho hàng</button>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div id="dataTable_filter" class="dataTables_filter">
+                                    <label>
+                                        Tìm kiếm:
+                                        <input id="txtSearch" type="text" class="form-control form-control-sm" aria-controls="dataTable"  style="display:inline-block;width:auto"/>
+                                        <button class="btn btn-success" id="btnSearch"><i class="mdi mdi-account-search"></i></button>
+                                        <button class="btn btn-success" id="btnReset"><i class="mdi mdi-reload"></i></button>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Mã kho hàng</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Số lượng chứa</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblData"></tbody>
+                        </table>
+                        <div id="pagination" class="pagination"></div>
+                        <script id="data-template" type="x-tmpl-mustache">
+                            <tr>
+                                <td>{{IDWareHouse}}</td>
+                                <td>{{Address}}</td>
+                                <td>{{Amount}}</td>
+                                <td>
+                                    <button class="btn btn-light btnEdit" data-id="{{IDWareHouse}}"><i class="mdi mdi-tooltip-edit"></i>Chỉnh sửa</button>
+                                    @*<button class="btn btn-light btnDelete" data-id="{{IDWareHouse}}"><i class="mdi mdi-delete-forever"></i>Delete</button>*@
+                                </td>
+                            </tr>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="modalAddUpdate" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add/Update WareHouse</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="txtAddress">Address</label>
+                        <input type="text" class="form-control" id="txtAddress">
+                        <input type="hidden" id="hidID" value="0" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtAmount">Amount</label>
+                        <input type="number" class="form-control" id="txtAmount">
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

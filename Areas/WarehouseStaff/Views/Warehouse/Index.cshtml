@@ -1,0 +1,232 @@
+﻿@model Web.Models.ViewModels.WarehouseVM
+@{
+    ViewBag.Title = "Kho hàng";
+    Layout = "~/Areas/WarehouseStaff/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Kho hàng sản phẩm</h4>
+            <a href="#" class="btn btn-info" onclick="Add(0)">Thêm kho hàng mới</a>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> Mã kho hàng</th>
+                        <th> Địa chỉ</th>
+                        <th> Tổng số</th>
+                        <th> Thao tác (Sửa)</th>
+                        @*<th> Thao tác (Xóa)</th>*@
+                    </tr>
+                </thead>
+                <tbody id="tblData">
+                </tbody>
+            </table>
+            <div id="paged" class="pagination"></div>
+        </div>
+    </div>
+
+    @*Create A Popup Modal With Registration Form For Add Or Edit Record*@
+
+    <div class="modal fade" id="MyModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="ModalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <form class="forms-sample" id="form" enctype="multipart/form-data">
+                        <fieldset id="SubmitForm">
+                            @Html.HiddenFor(m => m.IDWareHouse, new { @id = "IDWareHouse" })
+                            <div class="form-group">
+                                <label for="Address">Địa chỉ</label>
+                                @Html.TextBoxFor(m => m.Address, new { @id = "Address", @class = "form-control", @placeholder = "Địa chỉ" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Amount">Tổng số</label>
+                                @Html.TextBoxFor(m => m.Amount, new { @id = "Amount", @class = "form-control", @placeholder = "Tổng số"  })                                
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-gradient-primary mr-2" id="SaveRecord">Lưu</button>
+                    <button class="btn btn-light" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Create A PopUp Modal For DeleteConfirmation*@
+
+    <div class="modal fade" id="DeleteConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Xóa kho hàng</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>Bạn có muốn xóa kho hàng này không?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-light" data-dismiss="modal" id="r">Hủy</a>
+                    <a href="#" class="btn btn-gradient-primary mr-2" onclick="ConfirmDelete()">Xác nhận</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+   
+    $(document).ready(function () {
+        //Initially load pagenumber=1
+        GetPageData(1);
+    });
+     function GetPageData(pageNum) {
+        //After every trigger remove previous data and paging
+        $("#tblData").empty();
+        $("#paged").empty();
+        $.getJSON("/WarehouseStaff/Warehouse/GetPaggedData", { pageNumber: pageNum}, function (response) {
+            var rowData = "";
+            for (var i = 0; i < response.Data.length; i++) {
+                rowData = rowData +
+                    '<tr class="row_' + response.Data[i].IDWareHouse + '">' +
+                    '<td>' + response.Data[i].IDWareHouse +
+                    '</td><td>' + response.Data[i].Address +
+                    '</td><td>' + response.Data[i].Amount +
+                    '</td><td>' + "<a href='#' class='btn btn-warning' onclick='EditRecord(" + response.Data[i].IDWareHouse + ")' ><span class='mdi mdi-table-edit'></span></a>" +
+                    //'</td><td>' + "<a href='#' class='btn btn-danger' onclick='DeleteRecord(" + response.Data[i].IDWareHouse + ")' ><span class='mdi mdi-delete'></span></a>" +
+
+                    '</td></tr>';
+            }
+            $("#tblData").append(rowData);
+            PaggingTemplate(response.TotalPages, response.CurrentPage);
+        });
+    }
+    //This is paging temlpate ,you should just copy paste
+    function PaggingTemplate(totalPage, currentPage) {
+        var template = "";
+        var TotalPages = totalPage;
+        var CurrentPage = currentPage;
+        var PageNumberArray = Array();
+
+        var countIncr = 1;
+        for (var i = currentPage; i <= totalPage; i++) {
+            PageNumberArray[0] = currentPage;
+            if (totalPage != currentPage && PageNumberArray[countIncr - 1] != totalPage) {
+                PageNumberArray[countIncr] = i + 1;
+            }
+            countIncr++;
+        };
+        PageNumberArray = PageNumberArray.slice(0, 5);
+        var FirstPage = 1;
+        var LastPage = totalPage;
+        if (totalPage != currentPage) {
+            var ForwardOne = currentPage + 1;
+        }
+        var BackwardOne = 1;
+        if (currentPage > 1) {
+            BackwardOne = currentPage - 1;
+        }
+        
+        template = "<hr/><p>" + CurrentPage + " trong số " + TotalPages + " trang</p>"
+        template = template + '<a class="page-link" href="#" onclick="GetPageData(' + FirstPage +')">&laquo;</a>' +
+            '<a class="page-link" href="#" onclick="GetPageData(' + BackwardOne + ')">Trước</a>';
+
+        var numberingLoop = "";
+        for (var i = 0; i < PageNumberArray.length; i++) {
+            numberingLoop = numberingLoop +
+                '<a class="page-link" onclick="GetPageData(' + PageNumberArray[i] + ')" href="#">' + PageNumberArray[i] + '</a>'
+        }
+        template = template + numberingLoop +
+            '<a class="page-link" href="#" onclick="GetPageData(' + ForwardOne + ')" >Tiếp</a>' +
+            '<a class="page-link" href="#" onclick="GetPageData(' + LastPage + ')">&raquo;</a>';
+
+        $("#paged").append(template);
+    }
+
+    //Show The Popup Modal For Add
+
+    function Add(IDWareHouse) {
+        $("#form")[0].reset();
+        $("#IDWareHouse").val(0);
+        $("#ModalTitle").html("Thêm kho hàng mới");
+        $("#MyModal").modal();
+    }
+
+    //Show The Popup Modal For Edit Record
+
+    function EditRecord(IDWareHouse) {
+        var url = "/WarehouseStaff/Warehouse/GetById?Id=" + IDWareHouse;
+        $("#ModalTitle").html("Sửa kho hàng");
+        $("#MyModal").modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $("#IDWareHouse").val(obj.IDWareHouse);
+                $("#Address").val(obj.Address);
+                $("#Amount").val(obj.Amount);
+            }
+        })
+    }
+
+    $("#SaveRecord").click(function () {
+        var res = validate();
+        if (res == false) {
+            return false;
+        }
+        var data = $("#SubmitForm").serialize();
+        $.ajax({
+            type: "Post",
+            url: "/WarehouseStaff/Warehouse/SaveDataInDatabase",
+            data: data,
+            success: function (result) {
+                window.location.href = "/WarehouseStaff/Warehouse";
+                $("#MyModal").modal("hide");
+
+            }
+        })
+    })
+
+    //Show The Popup Modal For DeleteComfirmation
+    var DeleteRecord = function (Id) {
+        $("#IDWareHouse").val(Id);
+        $("#DeleteConfirmation").modal("show");
+    }
+    var ConfirmDelete = function () {
+        var IDWareHouse = $("#IDWareHouse").val();
+        $.ajax({
+            type: "POST",
+            url: "/WarehouseStaff/Warehouse/DeleteRecord?Id=" + IDWareHouse,
+            success: function (result) {
+                $("#DeleteConfirmation").modal("hide");
+                $(".row_" + IDWareHouse).remove();
+            }
+        })
+    }
+
+    function validate() {
+        var isValid = true;
+        if ($('#Address').val().trim() == "") {
+            $('#Address').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#Address').css('border-color', 'lightgrey');
+        }
+        if ($('#Amount').val().trim() == "") {
+            $('#Amount').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#Amount').css('border-color', 'lightgrey');
+        }
+        return isValid;
+    }
+</script>
+

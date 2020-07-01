@@ -1,0 +1,58 @@
+﻿
+@{ 
+    var infoadmin = (Web.Models.Data.Member)ViewBag.InfoAdmin;
+}
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item nav-profile">
+            <a href="#" class="nav-link">
+                <div class="nav-profile-image">
+                    <img class="imgAvatarAdmin" alt="profile" src="@infoadmin.Avatar">
+                    <span class="login-status online"></span>
+                    <!--change to offline or busy as needed-->
+                </div>
+                <div class="nav-profile-text d-flex flex-column">
+                    <span class="font-weight-bold mb-2">@infoadmin.FullName</span>
+                    <span class="text-secondary text-small">Project Manager</span>
+                </div>
+                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","Dashboard")">
+                <span class="menu-title">Trang chủ</span>
+                <i class="mdi mdi-home menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Quản lý</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Category")">Danh mục</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Member")">Khách hàng</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Employee")">Nhân viên</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","WareHouse")">Kho hàng</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Supplier")">Nhà cung cấp</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Xem</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-eye menu-icon"></i>
+            </a>
+            <div class="collapse" id="general-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","ImportBill")">Hóa đơn nhập hàng</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Statistical")">Thống kê</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav>

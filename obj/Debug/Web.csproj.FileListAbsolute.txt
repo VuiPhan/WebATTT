@@ -1,0 +1,468 @@
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\Web.dll.config
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\Web.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\Web.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\csc.exe
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\csc.exe.config
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\csc.rsp
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\csi.exe
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\csi.exe.config
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\csi.rsp
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.Managed.Core.targets
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.AppContext.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Collections.Immutable.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Console.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Globalization.Calendars.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.IO.Compression.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.IO.FileSystem.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Net.Http.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Net.Sockets.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Reflection.Metadata.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.ValueTuple.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Xml.XmlDocument.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Xml.XPath.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\vbc.exe
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\vbc.exe.config
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\vbc.rsp
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\VBCSCompiler.exe
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\roslyn\VBCSCompiler.exe.config
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\CKFinder.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\CKFinder_FileEditor.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\CKFinder_ImageResize.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\CKFinder_Watermark.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\EntityFramework.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\EntityFramework.SqlServer.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\EPPlus.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\ExcelDataReader.DataSet.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\ExcelDataReader.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\Microsoft.Web.Infrastructure.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\Newtonsoft.Json.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Helpers.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Mvc.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Razor.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Webpages.Deployment.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Webpages.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Webpages.Razor.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\CKFinder.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\CKFinder_FileEditor.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\CKFinder_ImageResize.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\CKFinder_Watermark.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\EntityFramework.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\EntityFramework.SqlServer.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\EPPlus.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\ExcelDataReader.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\ExcelDataReader.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\ExcelDataReader.DataSet.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\ExcelDataReader.DataSet.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\Newtonsoft.Json.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Razor.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Webpages.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Webpages.Deployment.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Webpages.Razor.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Helpers.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\bin\System.Web.Mvc.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\obj\Debug\Web.csprojAssemblyReference.cache
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\obj\Debug\Web.csproj.CopyComplete
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\obj\Debug\Web.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Project\Web\obj\Debug\Web.pdb
+E:\Semester I\Đồ án web\WebNew\Web\bin\Web.dll.config
+E:\Semester I\Đồ án web\WebNew\Web\bin\Web.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\Web.pdb
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\csc.exe
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\csc.exe.config
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\csc.rsp
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\csi.exe
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\csi.exe.config
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\csi.rsp
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.AppContext.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Collections.Immutable.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Console.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Globalization.Calendars.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.IO.Compression.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.IO.FileSystem.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Net.Http.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Net.Sockets.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Reflection.Metadata.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.ValueTuple.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Xml.XPath.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\vbc.exe
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\vbc.exe.config
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\vbc.rsp
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\VBCSCompiler.exe
+E:\Semester I\Đồ án web\WebNew\Web\bin\roslyn\VBCSCompiler.exe.config
+E:\Semester I\Đồ án web\WebNew\Web\bin\CKFinder.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\CKFinder_FileEditor.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\CKFinder_ImageResize.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\CKFinder_Watermark.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\EntityFramework.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\EntityFramework.SqlServer.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\EPPlus.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\ExcelDataReader.DataSet.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\ExcelDataReader.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\Microsoft.Web.Infrastructure.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\Newtonsoft.Json.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Helpers.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Mvc.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Razor.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Webpages.Deployment.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Webpages.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Webpages.Razor.dll
+E:\Semester I\Đồ án web\WebNew\Web\bin\CKFinder.pdb
+E:\Semester I\Đồ án web\WebNew\Web\bin\CKFinder_FileEditor.pdb
+E:\Semester I\Đồ án web\WebNew\Web\bin\CKFinder_ImageResize.pdb
+E:\Semester I\Đồ án web\WebNew\Web\bin\CKFinder_Watermark.pdb
+E:\Semester I\Đồ án web\WebNew\Web\bin\EntityFramework.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\EntityFramework.SqlServer.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\EPPlus.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\ExcelDataReader.pdb
+E:\Semester I\Đồ án web\WebNew\Web\bin\ExcelDataReader.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\ExcelDataReader.DataSet.pdb
+E:\Semester I\Đồ án web\WebNew\Web\bin\ExcelDataReader.DataSet.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\Newtonsoft.Json.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Razor.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Webpages.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Webpages.Deployment.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Webpages.Razor.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Helpers.xml
+E:\Semester I\Đồ án web\WebNew\Web\bin\System.Web.Mvc.xml
+E:\Semester I\Đồ án web\WebNew\Web\obj\Debug\Web.csprojAssemblyReference.cache
+E:\Semester I\Đồ án web\WebNew\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+E:\Semester I\Đồ án web\WebNew\Web\obj\Debug\Web.csproj.CopyComplete
+E:\Semester I\Đồ án web\WebNew\Web\obj\Debug\Web.dll
+E:\Semester I\Đồ án web\WebNew\Web\obj\Debug\Web.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\Web.dll.config
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\Web.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\Web.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\csc.exe
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\csc.exe.config
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\csc.rsp
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\csi.exe
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\csi.exe.config
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\csi.rsp
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.Managed.Core.targets
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.AppContext.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Collections.Immutable.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Console.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Globalization.Calendars.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.IO.Compression.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.IO.FileSystem.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Net.Http.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Net.Sockets.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Reflection.Metadata.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.ValueTuple.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Xml.XmlDocument.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Xml.XPath.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\vbc.exe
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\vbc.exe.config
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\vbc.rsp
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\VBCSCompiler.exe
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\roslyn\VBCSCompiler.exe.config
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\CKFinder.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\CKFinder_FileEditor.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\CKFinder_ImageResize.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\CKFinder_Watermark.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\EntityFramework.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\EntityFramework.SqlServer.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\EPPlus.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\ExcelDataReader.DataSet.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\ExcelDataReader.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\Microsoft.Web.Infrastructure.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\Newtonsoft.Json.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Helpers.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Mvc.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Razor.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Webpages.Deployment.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Webpages.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Webpages.Razor.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\CKFinder.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\CKFinder_FileEditor.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\CKFinder_ImageResize.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\CKFinder_Watermark.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\EntityFramework.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\EntityFramework.SqlServer.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\EPPlus.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\ExcelDataReader.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\ExcelDataReader.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\ExcelDataReader.DataSet.pdb
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\ExcelDataReader.DataSet.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\Newtonsoft.Json.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Razor.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Webpages.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Webpages.Deployment.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Webpages.Razor.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Helpers.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\bin\System.Web.Mvc.xml
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\obj\Debug\Web.csprojAssemblyReference.cache
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\obj\Debug\Web.csproj.CopyComplete
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\obj\Debug\Web.dll
+E:\ql9\NĂM 3 - HK1\Lập trình Web\Visual Studio\WebNew\Web\obj\Debug\Web.pdb
+D:\ql9\Source Code\KarmaShop\Web\bin\Web.dll.config
+D:\ql9\Source Code\KarmaShop\Web\bin\Web.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\Web.pdb
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\csc.exe
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\csc.exe.config
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\csc.rsp
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\csi.exe
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\csi.exe.config
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\csi.rsp
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.Managed.Core.targets
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.AppContext.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Collections.Immutable.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Console.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Globalization.Calendars.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.IO.Compression.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.IO.FileSystem.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Net.Http.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Net.Sockets.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Reflection.Metadata.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.ValueTuple.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Xml.XmlDocument.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Xml.XPath.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\vbc.exe
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\vbc.exe.config
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\vbc.rsp
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\VBCSCompiler.exe
+D:\ql9\Source Code\KarmaShop\Web\bin\roslyn\VBCSCompiler.exe.config
+D:\ql9\Source Code\KarmaShop\Web\bin\CKFinder.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\CKFinder_FileEditor.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\CKFinder_ImageResize.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\CKFinder_Watermark.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\EntityFramework.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\EntityFramework.SqlServer.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\EPPlus.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\ExcelDataReader.DataSet.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\ExcelDataReader.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\Microsoft.Web.Infrastructure.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\Newtonsoft.Json.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Helpers.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Mvc.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Razor.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Webpages.Deployment.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Webpages.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Webpages.Razor.dll
+D:\ql9\Source Code\KarmaShop\Web\bin\CKFinder.pdb
+D:\ql9\Source Code\KarmaShop\Web\bin\CKFinder_FileEditor.pdb
+D:\ql9\Source Code\KarmaShop\Web\bin\CKFinder_ImageResize.pdb
+D:\ql9\Source Code\KarmaShop\Web\bin\CKFinder_Watermark.pdb
+D:\ql9\Source Code\KarmaShop\Web\bin\EntityFramework.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\EntityFramework.SqlServer.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\EPPlus.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\ExcelDataReader.pdb
+D:\ql9\Source Code\KarmaShop\Web\bin\ExcelDataReader.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\ExcelDataReader.DataSet.pdb
+D:\ql9\Source Code\KarmaShop\Web\bin\ExcelDataReader.DataSet.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\Newtonsoft.Json.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Razor.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Webpages.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Webpages.Deployment.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Webpages.Razor.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Helpers.xml
+D:\ql9\Source Code\KarmaShop\Web\bin\System.Web.Mvc.xml
+D:\ql9\Source Code\KarmaShop\Web\obj\Debug\Web.csprojAssemblyReference.cache
+D:\ql9\Source Code\KarmaShop\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\ql9\Source Code\KarmaShop\Web\obj\Debug\Web.csproj.CopyComplete
+D:\ql9\Source Code\KarmaShop\Web\obj\Debug\Web.dll
+D:\ql9\Source Code\KarmaShop\Web\obj\Debug\Web.pdb
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\Web.dll.config
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\Web.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\Web.pdb
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\csc.exe
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\csc.exe.config
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\csc.rsp
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\csi.exe
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\csi.exe.config
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\csi.rsp
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.AppContext.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Collections.Immutable.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Console.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Globalization.Calendars.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.IO.Compression.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.IO.FileSystem.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Net.Http.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Net.Sockets.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Reflection.Metadata.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.ValueTuple.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Xml.XPath.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\vbc.exe
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\vbc.exe.config
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\vbc.rsp
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\VBCSCompiler.exe
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\roslyn\VBCSCompiler.exe.config
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\CKFinder.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\CKFinder_FileEditor.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\CKFinder_ImageResize.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\CKFinder_Watermark.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\EntityFramework.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\EntityFramework.SqlServer.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\EPPlus.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\ExcelDataReader.DataSet.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\ExcelDataReader.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\Microsoft.Web.Infrastructure.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\Newtonsoft.Json.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Helpers.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Mvc.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Razor.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Webpages.Deployment.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Webpages.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Webpages.Razor.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\CKFinder.pdb
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\CKFinder_FileEditor.pdb
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\CKFinder_ImageResize.pdb
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\CKFinder_Watermark.pdb
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\EntityFramework.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\EntityFramework.SqlServer.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\EPPlus.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\ExcelDataReader.pdb
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\ExcelDataReader.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\ExcelDataReader.DataSet.pdb
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\ExcelDataReader.DataSet.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\Newtonsoft.Json.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Razor.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Webpages.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Webpages.Deployment.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Webpages.Razor.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Helpers.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\bin\System.Web.Mvc.xml
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\obj\Debug\Web.csprojAssemblyReference.cache
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\obj\Debug\Web.csproj.CopyComplete
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\obj\Debug\Web.dll
+E:\Semester II - Junior\Network Security\ProjectFinal\Source Code\KarmaShop\Web\obj\Debug\Web.pdb

@@ -1,0 +1,217 @@
+﻿@model Web.Models.ViewModels.CheckoutVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start Banner Area -->
+@section banner{
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Thanh toán</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/Home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="/Checkout">Thanh toán</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<!-- End Banner Area -->
+<!--================Checkout Area =================-->
+<section class="checkout_area section_gap">
+    <div class="container">
+        @if (Session["Account"] == null)
+        {
+            <div class="returning_customer">
+                <div class="check_title">
+                    <h2>Nếu đây là lần đầu tiên bạn mua hàng? <a href="/Account">Ấn vào đây để đăng kí</a></h2>
+                </div>
+                <p>
+                    Nếu bạn đã từng mua hàng của chúng tôi trước đây, vui lòng điền thông tin vào hộp dưới đây
+                </p>
+                <div class="row contact_form">
+                    <div class="col-md-6 form-group p_star">
+                        <input type="text" class="form-control" id="username" placeholder="Tên đăng nhập">
+                    </div>
+                    <div class="col-md-6 form-group p_star">
+                        <input type="password" class="form-control" id="password" placeholder="Mật khẩu">
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <button id="submit" class="primary-btn">Đăng nhập</button>
+                        <a class="lost_pass" href="/Account">Quên mật khẩu?</a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        }
+        <div class="billing_details">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3>Thông tin thanh toán</h3>
+                        @using (Html.BeginForm("BillDetails", "Checkout", FormMethod.Post, new { @class = "row contact_form", @novalidate = "novalidate" }))
+                        {
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+                            @Html.HiddenFor(m => m.IDMember)
+                            @Html.HiddenFor(m => m.UserName, new { @id = "usernam" })
+                            @Html.HiddenFor(m => m.PassWord)
+
+                            <div class="col-md-6 form-group p_star">
+                                <label for="Ten">Họ và tên</label>
+                                @Html.TextBoxFor(m => m.FullName, new { @id = "name", @class = "form-control" })
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <label for="DiaChi">Địa chỉ</label>
+                                @Html.TextBoxFor(m => m.Address, new { @id = "addre", @class = "form-control" })
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <label for="SDT">Số điện thoại</label>
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @id = "phone", @class = "form-control" })
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <label for="Email">Địa chỉ Email</label>
+                                @Html.TextBoxFor(m => m.Email, new { @id = "mail", @class = "form-control", @type = "email" })
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <button type="submit" id="subm" class="primary-btn">Cập nhật</button>
+                            </div>
+                        }
+                </div>
+                <div class="col-lg-4">
+                    <div class="order_box">
+                        <h2>Đơn hàng của bạn</h2>
+                        @if (Model.carts != null)
+                        {
+                            <ul class="list">
+                                <li><a href="#">Sản phẩm <span>Tạm tính</span></a></li>
+                                @foreach (var item in Model.carts)
+                                {
+                                    <li><a href="#">@item.NameProduct <span class="middle">x @item.Amount</span> <span class="last">@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", @item.TotalMoney) ₫</span></a></li>
+                                }
+                            </ul>
+                            <ul class="list list_2">
+                                <li><a href="#">Tổng tiền <span>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", ViewBag.Total) ₫</span></a></li>
+                            </ul>
+                            if (Session["Account"] != null)
+                            {
+                                <h5 id="checkVal" style="color:darkorange"></h5>
+                                <a id="btnCheckout" class="primary-btn" href=@Url.Action("Checkout", "Checkout", new {id = Model.IDMember })>Đặt hàng</a>
+                            }
+                            else if (Session["Checkout"] != null)
+                            {
+                                <h5 id="checkVal" style="color:darkorange"></h5>
+                                <a id="btnCheckout" class="primary-btn" href=@Url.Action("Checkout", "Checkout", new {id = Model.IDMember })>Đặt hàng</a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Checkout Area =================-->
+
+<script>
+    $(document).ready(function () {
+        validate();
+    });
+    function validate() {
+        var add = $("#addre").val();
+        var ema = $("#mail").val();
+        var pho = $("#phone").val();
+        var nam = $("#name").val();
+        if (add == "") {
+            $("#addre").css('border-color', 'Red');
+            $("#btnCheckout").hide();
+            $("#checkVal").html("Vui lòng cập nhật thông tin giao hàng!");
+        }
+        if (ema == "") {
+            $("#mail").css('border-color', 'Red');
+            $("#btnCheckout").hide();
+            $("#checkVal").html("Vui lòng cập nhật thông tin giao hàng!");
+
+        }
+        if (pho == "") {
+            $("#phone").css('border-color', 'Red');
+            $("#btnCheckout").hide();
+            $("#checkVal").html("Vui lòng cập nhật thông tin giao hàng!");
+        }
+        if (nam == "") {
+            $("#name").css('border-color', 'Red');
+            $("#btnCheckout").hide();
+            $("#checkVal").html("Vui lòng cập nhật thông tin giao hàng!");
+        }
+    }
+
+    $("#submit").click(function () {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var error = $("#error");
+        var ok = $("#ok");
+
+        // resert 2 thẻ div thông báo trở về rỗng mỗi khi click nút đăng nhập
+        error.html("");
+        ok.html("");
+
+        // Kiểm tra nếu username rỗng thì báo lỗi
+        if (username == "") {
+            error.html("Tên đăng nhập không được để trống");
+            return false;
+        }
+        // Kiểm tra nếu password rỗng thì báo lỗi
+        if (password == "") {
+            error.html("Mật khẩu không được để trống");
+            return false;
+        }
+
+        // Chạy ajax gửi thông tin username và password về server check_dang_nhap.php
+        // để kiểm tra thông tin đăng nhập hợp lệ hay chưa
+        $.ajax({
+            url: "/Account/Login",
+            method: "POST",
+            data: { username: username, password: password },
+            success: function (json) {
+                if (json.isRedirect) {
+                    window.location.href = '/Checkout';
+                }
+                else {
+                    error.html("Tài khoản hoặc mật khẩu không chính xác! Vui lòng kiểm tra lại");
+                }
+            }
+        });
+    });
+
+    $("#mail").change(function () {
+        $("#mail").css('border-color', 'lightgrey');
+        var em = $("#mail").val();
+        var us = $("#usernam").val();
+        $.ajax({
+            type: "Post",
+            url: "/Account/TestEmail?email=" + em + "&username=" + us,
+            success: function (json) {
+                if (json.isRedirect) {
+                    document.getElementById("subm").disabled = false;
+                }
+                else {
+                    $("#mail").css('border-color', 'Red');
+                    document.getElementById("subm").disabled = true;
+                }
+            }
+        })
+    });
+    $("#addre").change(function () {
+        if ($("#addre").val() != "")
+            $("#addre").css('border-color', 'lightgrey');
+    });
+    $("#phone").change(function () {
+        if ($("#phone").val() != "")
+            $("#phone").css('border-color', 'lightgrey');
+    });
+    $("#name").change(function () {
+        if ($("#name").val() != "")
+            $("#name").css('border-color', 'lightgrey');
+    });
+</script>

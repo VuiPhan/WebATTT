@@ -1,0 +1,583 @@
+﻿@model Web.Models.ViewModels.ShopVM
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+    }
+
+        .rate:not(:checked) > input {
+            /*position: absolute;*/
+            top: -9999px;
+        }
+
+        .rate:not(:checked) > label {
+            float: right;
+            width: 1em;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 30px;
+            color: #ccc;
+        }
+
+            .rate:not(:checked) > label:before {
+                content: '★ ';
+            }
+
+        .rate > input:checked ~ label {
+            color: #ffc700;
+        }
+
+        .rate:not(:checked) > label:hover,
+        .rate:not(:checked) > label:hover ~ label {
+            color: #deb217;
+        }
+
+        .rate > input:checked + label:hover,
+        .rate > input:checked + label:hover ~ label,
+        .rate > input:checked ~ label:hover,
+        .rate > input:checked ~ label:hover ~ label,
+        .rate > label:hover ~ input:checked ~ label {
+            color: #c59b08;
+        }
+</style>
+
+@section banner{
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Trang chi tiết sản phẩm</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/Home">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="/Shop">Shop<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="/Shop?IDProductType=@Model.product.IDProductType">Danh mục</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+    <div class="container">
+        <div class="row s_product_inner">
+            <div class="col-lg-6">
+                <div class="s_Product_carousel">
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="@Url.Content("~/App_Img/product/"+ Model.product.Image0)" alt="">
+                    </div>
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="@Url.Content("~/App_Img/product/"+ Model.product.Image1)" alt="">
+                    </div>
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="@Url.Content("~/App_Img/product/"+ Model.product.Image2)" alt="">
+                    </div>
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="@Url.Content("~/App_Img/product/"+ Model.product.Image3)" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    <h2>@Model.product.NameProduct</h2>
+                    <h2>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", @Model.product.Price) ₫</h2>
+                    <ul class="list">
+                        <li><a class="active" href="/Shop?IDProductType=@Model.product.IDProductType"><span>Danh mục:</span>: @Model.product.ProductType.NameProductType</a></li>
+                        <li><a href="#"><span>Tình trạng</span>: Còn hàng</a></li>
+                    </ul>
+                    <p>
+                        @Model.product.Introduce
+                    </p>
+
+                    @Html.TextBoxFor(m => m.IDProduct, htmlAttributes: new { id = "MyId", @hidden = "hidden" })
+                    <div class="product_count">
+                        <label for="qty">Số lượng:</label>
+                        @*<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">*@
+                        @Html.TextBoxFor(m => m.Amount, htmlAttributes: new { @class = "input-text qty", @name = "qty", @id = "sst", @maxlength = "12", Value = "1", @title = "Quantity:" })
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                class="increase items-count" type="button">
+                            <i class="lnr lnr-chevron-up"></i>
+                        </button>
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 1 ) result.value--;return false;"
+                                class="reduced items-count" type="button">
+                            <i class="lnr lnr-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="card_area d-flex align-items-center">
+                        <button type="submit" class="primary-btn" id="btn_submit"> Thêm vào giỏ hàng</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================End Single Product Area =================-->
+<!--================Product Description Area =================-->
+<section class="product_description_area">
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mô tả </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                   aria-selected="false">Bình luận</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+                   aria-selected="false">Đánh giá</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <p>
+                    @Model.product.Description
+                </p>
+                <div class="single-prd-item">
+                    <img style="float: left; width: 500px; margin-bottom: 10px; margin-right: 10px;" src="@Url.Content("~/App_Img/product/"+ Model.product.Image0)" alt="">
+                </div>
+                <div class="single-prd-item">
+                    <img style="float: left; width: 500px; margin-bottom: 10px;" src="@Url.Content("~/App_Img/product/"+ Model.product.Image1)" alt="">
+                </div>
+                <div class="single-prd-item">
+                    <img style="float: left; width: 500px; margin-right: 10px;" src="@Url.Content("~/App_Img/product/"+ Model.product.Image2)" alt="">
+                </div>
+                <div class="single-prd-item">
+                    <img style="width: 500px;" src="@Url.Content("~/App_Img/product/"+ Model.product.Image3)" alt="">
+                </div>  
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="comment_list">
+                            @if (Model.comments != null)
+                            {
+                                foreach (var item in Model.comments)
+                                {
+                                    <div class="review_item">
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img style="border-radius: 50%;   width: 60px;" src="~/App_Img/profile/@item.Avartar" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>@item.FullName</h4>
+                                                @if (item.IDMember == 6 || item.IDMember == 7)
+                                                {
+                                                    <span style="color:blueviolet;font-size: 14px;border-top-style: solid;border-top-width: 0px; ">Nhân viên bán hàng</span>
+                                                }
+                                                <h5>@item.Date</h5>
+
+                                                @if (Session["Account"] != null)
+                                                {
+                                                    Web.Models.Data.Member khachHang = (Web.Models.Data.Member)Session["Account"];
+                                                    if (khachHang.IDMember == item.IDMember)
+                                                    {
+                                                        <a class="reply_btn" href=@Url.Action("DeleteComment", "Shop", new { id = @item.IDComment, MaSP = @item.IDProduct })>Xóa</a>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                        <p>
+                                            @item.Message
+                                        </p>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                    @if (Session["Account"] != null)
+                    {
+                        @Html.Action("_Comments", "Shop", new { id = Model.product.IDProduct })
+                    }
+                    else
+                    {
+                        <div class="col-lg-6">
+                            <div class="review_box">
+                                <h5>Đăng nhập và để lại bình luận</h5>
+                                <a href="/Account" target="_blank" class="btn primary-btn">Đăng nhập</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row total_rate">
+                            <div class="col-6">
+                                <div class="box_total">
+                                    <h5>Overall</h5>
+                                    <h4>@ViewBag.Overall</h4>
+                                    <h6>(@ViewBag.Count đánh giá)</h6>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="rating_list">
+                                    <h3>Dựa trên  @ViewBag.Count đánh giá</h3>
+                                    <ul class="list">
+                                        <li>
+                                            <a href="#">
+                                                5 sao
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+
+                                                @*<i class="fa fa-star">
+                                                        </i><i class="fa fa-star">
+                                                            </i><i class="fa fa-star">
+                                                                </i><i class="fa fa-star">
+                                                                    </i><i class="fa fa-star">
+                                                    </i>*@
+                                                @ViewBag.star5
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                4 sao
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                @ViewBag.star4
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                3 sao     <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />@ViewBag.star3
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                2 sao     <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                @ViewBag.star2
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                1 sao     <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                @ViewBag.star1
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment_list">
+                            @if (Model.reviews != null)
+                            {
+                                foreach (var item in Model.reviews)
+                                {
+                                    <div class="review_item">
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img style="border-radius: 50%;   width: 60px;" src="~/App_Img/profile/@item.Avartar" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>@item.FullName</h4>
+                                                <h5>@item.Date</h5>
+
+                                                @{
+                                                    if (@item.Star == 1)
+                                                    {
+                                                        <div class="media-body">
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+
+                                                        </div>
+                                                    }
+                                                    if (@item.Star == 2)
+                                                    {
+                                                        <div class="media-body">
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+
+
+                                                        </div>
+                                                    }
+                                                    if (@item.Star == 3)
+                                                    {
+                                                        <div class="media-body">
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+
+
+                                                        </div>
+                                                    }
+                                                    if (@item.Star == 4)
+                                                    {
+                                                        <div class="media-body">
+
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+
+                                                        </div>
+                                                    }
+                                                    if (@item.Star == 5)
+                                                    {
+                                                        <div class="media-body">
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                            <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker.gif" style="width:20px;height:20px;" />
+                                                        </div>
+                                                    }
+
+                                                }
+
+                                                @if (Session["Account"] != null)
+                                                {
+                                                    Web.Models.Data.Member khachHang = (Web.Models.Data.Member)Session["Account"];
+                                                    if (khachHang.IDMember == item.IDMember)
+                                                    {
+                                                        <a class="reply_btn" href=@Url.Action("DeleteReview", "Shop", new { id = @item.IDReview, MaSP = @item.IDProduct })>Xóa</a>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                        <p style="margin-left:50px!important;">
+                                            @item.Message
+                                        </p>
+                                        @if (item.Image != null)
+                                        {
+                                            <div>
+                                                <img style="width:200px;" src="~/App_Img/review/@item.Image" />
+                                            </div>
+                                        }
+
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        @if (Session["Account"] == null)
+                        {
+                            <p>
+                                Bạn vui lòng đăng nhập và mua sản phẩm để có thể đánh giá.
+                            </p>
+                            <a href="/Account" target="_blank" class="btn primary-btn">Đăng nhập</a>
+                        }
+                        else
+                        {
+                            <div class="review_box">
+                                <div>
+                                    <h4 style="display:inline-block;">Thêm đánh giá sản phẩm</h4>
+                                    <img src="~/App_Img/GIFAnimation/in-love.gif" />
+                                </div>
+                                <p>Số sao đánh giá:</p>
+                                @*<ul class="list">*@
+                                @*<li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>*@
+
+                                <div class="rate">
+                                    <input type="radio" id="star5" name="rate" value="5" hidden />
+                                    <label for="star5" title="text">5 sao</label>
+                                    <input type="radio" id="star4" name="rate" value="4" hidden />
+                                    <label for="star4" title="text">4 sao</label>
+                                    <input type="radio" id="star3" name="rate" value="3" hidden />
+                                    <label for="star3" title="text">3 sao</label>
+                                    <input type="radio" id="star2" name="rate" value="2" hidden />
+                                    <label for="star2" title="text">2 sao</label>
+                                    <input type="radio" id="star1" name="rate" value="1" hidden />
+                                    <label for="star1" title="text">1 sao</label>
+                                </div>
+
+                                <div>
+                                    <p></p>
+                                    <div class="row contact_form">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="message" id="message" rows="1"
+                                                          placeholder="Review" onfocus="this.placeholder = ''"
+                                                          onblur="this.placeholder = 'Review'"></textarea>
+                                                <label>Thêm ảnh</label>
+                                                <input class="form-control" hidden="hidden" id="Image" />
+                                                <input type="file" class="form-control" id="file" value="Chọn tệp ảnh" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 text-right">
+                                            <button type="submit" value="submit" class="primary-btn"
+                                                    data-id="@Model.IDProduct" id="btn_submit11">
+                                                Đánh giá
+                                                <img src="~/App_Img/GIFAnimation/ezgif.com-gif-maker CommentNew.gif"
+                                                     style="width:30px;height:30px;" />
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Product Description Area =================-->
+<!--================Similar Product Area =================-->
+<section>
+    <!-- single product slide -->
+    <div class="single-product-slider">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="section-title">
+                        <h1>Sản phẩm tương tự</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @Html.Action("Similar", "Shop", new { id = Model.product.IDProduct, MaDanhMuc = Model.product.IDProductType })
+            </div>
+        </div>
+    </div>
+    <div class="single-product-slider">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="section-title">
+                        <h1>Sản phẩm đã xem</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @Html.Action("Seen", "Shop")
+            </div>
+        </div>
+    </div>
+    <div class="single-product-slider">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="section-title">
+                        <h1>Sản phẩm bạn đã thêm vào ưa thích</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @Html.Action("ListWishParialView", "Shop")
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Similar Product Area =================-->
+<script>
+    $("#btn_submit").on("click", function () {
+        var IdProduct = $("#MyId").val();
+        var Amount = $("#sst").val();
+        $.ajax({
+            url: "/Shop/AddToCart",
+            method: "POST",
+            data: { IdProduct: IdProduct, Amount: Amount },
+            success: function (json) {
+                if (json.status) {
+                    var x = json.TotalMoney1;
+                    var y = json.Quanlity1;
+                    document.getElementById("Total1").innerHTML = x;
+                    document.getElementById("Count").innerHTML = y;
+                }
+                else {
+                    alert(json.Message);
+                }
+            }
+        });
+
+    });
+    $("#file").change(function () {
+        if (window.FormData !== undefined) {
+            var fileUpload = $('#file').get(0);
+            var file = fileUpload.files;
+            var formData = new FormData();
+            formData.append('file', file[0]);
+            $.ajax({
+                type: 'POST',
+                url: '/Shop/UploadImg',
+                contentType: false, //không có header
+                processData: false, //không xử lý dữ liệu
+                data: formData,
+                success: function (urlImage) {
+                    $('#Image').val(urlImage);
+                },
+                error: function (err) {
+                    bootbox.alert('Có lỗi khi Upload:' + err.statusText);
+                }
+            })
+        }
+    })
+    var x = 0;
+    $('input:radio').change(function () {
+        if ($(this).val() === '1') {
+            x = 1;
+
+        }
+        if ($(this).val() === '2') {
+            x = 2;
+
+        }
+        if ($(this).val() === '3') {
+            x = 3;
+
+        }
+        if ($(this).val() === '4') {
+            x = 4;
+
+        }
+        if ($(this).val() === '5') {
+            x = 5;
+
+        }
+
+    });
+    $("#btn_submit11").on("click", function () {
+
+        var IdProduct = $(this).data('id');
+        var message = $("#message").val();
+        var star = x;
+        var img = $("#Image").val();
+        if (x == 0) {
+
+            alert("Bạn chưa chọn sao đánh giá");
+            return false;
+        }
+        $.ajax({
+            url: "/Shop/AddReview",
+            method: "POST",
+            data: { IdProduct: IdProduct, message: message, star: star, Img: img },
+            success: function (json) {
+                if (json.status) {
+                    window.location.reload();
+                }
+                else {
+                    alert(json.message);
+                }
+            }
+        });
+    });
+</script>
+

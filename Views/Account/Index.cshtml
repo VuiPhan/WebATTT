@@ -1,0 +1,342 @@
+﻿@model Web.Models.Data.Member
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutOrder.cshtml";
+}
+<!--Script-->
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootbox.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+@*<script src="~/Scripts/plugin/mustache.js"></script>*@
+<script src="~/Scripts/mustache.min.js"></script>
+@*<script src="~/Scripts/plugin/jquery.twbsPagination.min.js"></script>*@
+<script src="~/Scripts/jquery.twbsPagination.min.js"></script>
+<link href="~/Scripts/StyleSheet1.css" rel="stylesheet" />
+<script src="~/Scripts/Controller/BillAccount.js"></script>
+
+
+@section banner{
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Trang tài khoản</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/Home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="/Account">Trang tài khoản</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<!--================Login Box Area =================-->
+<section class="login_box_area section_gap">
+    @if (Session["Account"] == null)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="login_box_img">
+                        <img class="img-fluid" src="~/Resources/Client/img/login.jpg" alt="">
+                        <div class="hover">
+                            <h4>Bạn là người dùng mới?</h4>
+                            <p> Dữ liệu cá nhân của bạn sẽ được sử dụng để hỗ trợ trải nghiệm của bạn trên toàn bộ trang web này</p>
+                            <a class="primary-btn" onclick="Add()">Tạo tài khoản mới</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    @Html.Action("_Login", "Account")
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        Web.Models.Data.Member khachHang = (Web.Models.Data.Member)Session["Account"];
+        <section class="product_description_area">
+            <div class="container">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                           aria-selected="false">Bảng điều khiển</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                           aria-selected="false">Đơn hàng</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div>
+                            <h4 style="color: darkred">@ViewBag.Notification </h4>
+                        </div>
+                        <div>
+                            <p>
+                                Xin chào <strong>@khachHang.FullName</strong> (không phải <strong>@khachHang.FullName</strong>?
+                                <a href="@Url.Action("LogOut","Account")"> Đăng xuất </a>)
+                            </p>
+
+                        </div>
+                        <div style="border: solid;  border-style: solid; border-color: darkgray; padding: 15px;">
+                            <h4><a href="/Account/ChangePassword/@khachHang.IDMember">Thay đổi mật khẩu</a></h4>
+                        </div>
+                        <br />
+                        <div style="border: solid; border-style:solid; border-color: darkgray; padding: 15px;">
+                            <h4><a href="/Account/Update">Cập nhật thông tin tài khoản </a></h4>
+                        </div>
+                        <br />
+                        <div style="border: solid; border-style:solid; border-color: darkgray; padding: 15px;">
+                            <h4><a href="/Account/Delete/@khachHang.IDMember">Xóa tài khoản </a></h4>
+                        </div>
+                        <br />
+                        <div style="border: solid; border-style:solid; border-color: darkgray; padding: 15px;">
+                            <h4><a href="/Account/TwoFac">Xác thực hai yếu tố</a></h4>
+                        </div>
+                        <br />
+                    </div>
+
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active btnstatus" data-status="10" id="home-tab" data-toggle="tab" href="" role="tab" aria-controls="home"
+                                   aria-selected="false">Tất cả đơn hàng</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btnstatus" data-status="1" id="home-tab" data-toggle="tab" href="" role="tab" aria-controls=""
+                                   aria-selected="false">Chờ xác nhận</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btnstatus" data-status="2" id="home-tab" data-toggle="tab" href="" role="tab" aria-controls=""
+                                   aria-selected="false">Chờ lấy hàng</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btnstatus" data-status="3" id="home-tab" data-toggle="tab" href="" role="tab" aria-controls=""
+                                   aria-selected="false">Đang giao</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btnstatus" data-status="4" id="home-tab" data-toggle="tab" href="" role="tab" aria-controls=""
+                                   aria-selected="false">Đã giao</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btnstatus" data-status="0" id="home-tab" data-toggle="tab" href="" role="tab" aria-controls=""
+                                   aria-selected="false">Đã hủy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btnstatus" data-status="5" id="home-tab" data-toggle="tab" href="" role="tab" aria-controls=""
+                                   aria-selected="false">Trả hàng / Hoàn tiền</a>
+                            </li>
+                        </ul>
+
+
+
+                        <p id="idSLDon" style="color:orange; font-size:20px; text-align:left;"> </p>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td style="font-size:15px!important;">Mã đơn đặt hàng</td>
+                                    <td style="font-size:15px!important;">Ngày đặt hàng</td>
+                                    <td style="font-size:15px!important;">Tên khách hàng</td>
+                                    <td style="font-size:15px!important;">Tình trạng đơn hàng</td>
+                                    <td style="font-size:15px!important;text-align:center;">Thao tác</td>
+                                </tr>
+                            </thead>
+                            <tbody id="tblData"></tbody>
+
+                        </table>
+                        <div id="pagination" class="pagination" style="width:1000px!important;margin-left:0px;">
+                        </div>
+                        <script id="data-template" type="x-tmpl-mustache">
+                            <tr>
+                                <td style="font-size:15px!important;">{{IDOrder}}</td>
+                                <td style="font-size:15px!important;">{{OrderedDate}}</td>
+                                <td style="font-size:15px!important;">{{NameCus}}</td>
+                                <td style="font-size:15px!important;width:150px;">{{StatusOrder}}</td>
+                                <td>
+                                    <button class="btn btn-primary btn-Edit" style="margin-right:0px;" data-id="{{IDOrder}}">Xem chi tiết đơn hàng</button>
+                                </td>
+                            </tr>
+                        </script>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    }
+
+
+    @*Create A Popup Modal With Registration Form For Add*@
+
+    <div class="modal fade" id="MyModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4> Đăng ký</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="forms-sample" id="form">
+                        <fieldset id="SubmitForm">
+                            @Html.HiddenFor(m => m.IDMember, new { @id = "IDMember" })
+                            <div class="form-group">
+                                <label for="Ten">Họ và tên</label>
+                                @Html.TextBoxFor(m => m.FullName, new { @id = "FullName", @class = "form-control", @placeholder = "Họ và tên" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Email">Địa chỉ Email</label>
+                                <h5 id="notifi" style="color:orangered;"></h5>
+                                @Html.TextBoxFor(m => m.Email, new { @id = "Email", @class = "form-control", @placeholder = "Email" })
+                            </div>
+                            <div class="form-group">
+                                <label for="TenDangNhap">Tên đăng nhập</label>
+                                <h5 id="notifi" style="color:orangered;"></h5>
+                                @Html.TextBoxFor(m => m.UserName, new { @id = "UserName", @class = "form-control", @placeholder = "Tên đăng nhập" })
+                            </div>
+                            <div class="form-group">
+                                <label for="MatKhau">Mật khẩu</label>
+                                <h5 id="notifii" style="color:orangered;"></h5>
+                                @Html.PasswordFor(m => m.PassWord, new { @id = "PassWord", @class = "form-control", @placeholder = "Mật khẩu" })
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-gradient-primary mr-2" id="Create">Đăng ký</button>
+                    <button class="btn btn-gradient-light" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--================End Login Box Area =================-->
+
+<script>
+    //Show The Popup Modal For Add
+
+    function Add() {
+        $("#form")[0].reset();
+        $("#MyModal").modal();
+    }
+    function validateEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+
+    $("#Email").change(function () {
+        $("#Email").css('border-color', 'lightgrey');
+        var pa = $("#Email").val();
+        var checkEmail = validateEmail(pa);
+        if (checkEmail == false) {
+            $('#Email').css('border-color', 'red');
+        }
+    })
+    $("#UserName").change(function () {
+        $("#UserName").css('border-color', 'lightgrey');
+    })
+    $("#PassWord").change(function () {
+        $("#PassWord").css('border-color', 'lightgrey');
+        var pa = $("#PassWord").val();
+        var x = document.getElementById("notifii");
+        x.style.display = 'none';
+        $.ajax({
+            type: "Post",
+            url: "/Account/CheckPassword?pass=" + pa,
+            success: function (json) {
+                if (json.isRedirect == 1) {
+                    $("#PassWord").css('border-color', 'Red');
+                    x.style.display = 'block'
+                    $("#notifii").html("Mật khẩu phải chứa chữ in hoa");
+                }
+                if (json.isRedirect == 2) {
+                    $("#PassWord").css('border-color', 'Red');
+                    x.style.display = 'block'
+                    $("#notifii").html("Mật khẩu phải chứa chữ in thường");
+                }
+                if (json.isRedirect == 3) {
+                    $("#PassWord").css('border-color', 'Red');
+                    x.style.display = 'block'
+                    $("#notifii").html("Mật khẩu phải chứa kí tự số");
+                }
+                if (json.isRedirect == 4) {
+                    $("#PassWord").css('border-color', 'Red');
+                    x.style.display = 'block'
+                    $("#notifii").html("Mật khẩu phải chứa kí tự đặc biệt");
+                }
+                if (json.isRedirect == 5) {
+                    $("#PassWord").css('border-color', 'Red');
+                    x.style.display = 'block'
+                    $("#notifii").html("Mật khẩu phải dài hơn 8 kí tự");
+                }
+            }
+        })
+    })
+
+
+    $("#Create").click(function () {
+        if ($('#UserName').val().trim() == "") {
+            $('#UserName').css('border-color', 'Red');
+            return false;
+        }
+        else {
+            $('#UserName').css('border-color', 'lightgrey');
+        }
+
+        if ($('#Email').val().trim() == "" || !validateEmail($("#Email").val()) ) {
+            $('#Email').css('border-color', 'Red');
+            return false;
+        }
+        else {
+            $('#Email').css('border-color', 'lightgrey');
+        }
+
+        if ($('#PassWord').val().trim() == "") {
+            $('#PassWord').css('border-color', 'Red');
+            return false;
+        }
+        else {
+            $('#PassWord').css('border-color', 'lightgrey');
+        }
+        if ($('#FullName').val().trim() == "") {
+            $('#FullName').css('border-color', 'Red');
+            return false;
+        }
+        else {
+            $('#FullName').css('border-color', 'lightgrey');
+        }
+
+        var data = $("#SubmitForm").serialize();
+        $.ajax({
+            type: "Post",
+            url: "/Account/Register",
+            data: data,
+            success: function (json) {
+                debugger;
+                if (json.isRedirect == 10) {
+                    alert('Địa chỉ Email đã tồn tại, Vui lòng chọn chức năng quên mật khẩu');
+                    $("#Email").css('border-color', 'Red');
+                    return;
+                }
+                if (json.isRedirect == 5) {
+                    $("#UserName").css('border-color', 'Red');
+                    alert("Tên người dùng đã tồn tại, vui lòng chọn tên khác");
+                    return;
+                }
+                if (json.isRedirect == 100) {
+                    $("#Email").css('border-color', 'Red');
+                    alert("Không tìm thấy địa chỉ Email này, Vui lòng nhập đúng Email");
+                    return;
+                }
+                if (json.isRedirect == 1) {
+                    window.location.href = json.redirectUrl;
+                }
+            }
+        })
+    })
+</script>
