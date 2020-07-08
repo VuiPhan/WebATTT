@@ -288,8 +288,10 @@
             $('#UserName').css('border-color', 'lightgrey');
         }
 
-        if ($('#Email').val().trim() == "" || !validateEmail($("#Email").val()) ) {
+        if ($('#Email').val().trim() == "" || validateEmail($("#Email").val()) == false) {
+            debugger;
             $('#Email').css('border-color', 'Red');
+            alert('Địa chỉ Email không hợp lệ, vui lòng kiểm tra lại');
             return false;
         }
         else {

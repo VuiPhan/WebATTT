@@ -29,9 +29,7 @@ namespace Web.Controllers
             // 3 là NVLK
             // 1 là Admin
             password = MaHoa.MaHoaSangMD5(username + password);
-            // password = MaHoa.MaHoaSangMD5(password);
-            //password = MaHoa.MaHoaSangMD5(password);
-            Member member = db.Members.Where(n => n.UserName == username && n.PassWord == password).SingleOrDefault();
+            Member member = db.Members.Where(n => n.UserName == username && n.PassWord == password && n.IDMemType!=4).SingleOrDefault();
             if (member == null)
             {
                 return Json(new
@@ -41,7 +39,7 @@ namespace Web.Controllers
             }
             else
             {
-                Session["Account"] = member;
+                //Session["Account"] = member;
                 var lstQuyen = db.Authority_MemType.Where(n => n.IDMemType == member.IDMemType);
                 //Duyệt list quyền
                 string Quyen = "";
@@ -96,11 +94,25 @@ namespace Web.Controllers
                                 string s = "Tài khoản bị khóa đến " + TimeLock.ToString("dd/MM/yyyy HH:mm:ss");
                                 return Json(new
                                 {
-                                    //  redirectUrl = Url.Action("ConfLogin", "LoginSystem"),
                                     isRedirect = 100,
                                     message = s
 
                                 });
+                            }
+                            try
+                            {
+                                //string t = "Quý khách sẽ mất Tiền và thông tin nếu cung cấp mã OPT cho bất ky ai. Mã OTP xác thực của quý khách là:" + CODEOTP.ToString();
+                                Member memberCheck = (Member)Session["AdminNoOTP"];
+                                //new SendSMSHelper().SendSMS(member.PhoneNumber, t);
+                                member = db.Members.Where(p => p.IDMember == memberCheck.IDMember).SingleOrDefault();
+                                member.OTP = CODEOTP.ToString();
+                                SendSMSHelper.SendSMS(member.PhoneNumber, "Vui lòng không cung cấp mã OTP cho bất kỳ ai.Mã OTP của bạn là " + CODEOTP.ToString());
+                                member.TimeSendOTP = DateTime.Now;
+                                db.SaveChanges();
+                            }
+                            catch (Exception)
+                            {
+                                throw;
                             }
                             return Json(new
                             {
@@ -124,7 +136,6 @@ namespace Web.Controllers
                             isRedirect = true
                         });
                     }
-
                 }
 
             }
@@ -136,23 +147,6 @@ namespace Web.Controllers
                 return RedirectToAction("Error", "Home");
             }
             // Thực hiện gửi OTP
-            try
-            {
-                //string t = "Quý khách sẽ mất Tiền và thông tin nếu cung cấp mã OPT cho bất ky ai. Mã OTP xác thực của quý khách là:" + CODEOTP.ToString();
-                Member member = (Member)Session["AdminNoOTP"];
-                //new SendSMSHelper().SendSMS(member.PhoneNumber, t);
-                member = db.Members.Where(p => p.IDMember == member.IDMember).SingleOrDefault();
-                member.OTP = CODEOTP.ToString();
-                member.TimeSendOTP = DateTime.Now;
-                db.SaveChanges();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-
             return View();
         }
         public JsonResult ReSendOTP(string code)
@@ -183,6 +177,8 @@ namespace Web.Controllers
                 member.TimeStartLock = null;
                 CODEOTP = rd.Next(100000, 999999);
                 member.OTP = CODEOTP.ToString();
+                // Thực hiện gửi OTP
+                SendSMSHelper.SendSMS(member.PhoneNumber, "Vui lòng không cung cấp mã OTP cho bất kỳ ai.Mã OTP của bạn là " + CODEOTP.ToString());
                 member.IsLock = false;
                 db.SaveChanges();
                 return Json(new
@@ -208,10 +204,7 @@ namespace Web.Controllers
 
                 });
             }
-
-           
         }
-
         public JsonResult RequestCode(string code)
         {
             // Xác định xem người đó có được nhập mã Code hay không?
@@ -219,8 +212,9 @@ namespace Web.Controllers
             Member member = (Member)Session["AdminNoOTP"];
             member = db.Members.Where(p => p.IDMember == member.IDMember).SingleOrDefault();
             DateTime TimecheckExpried = (DateTime)member.TimeSendOTP;
-            bool CheckExpried = DateTime.Now.Subtract(TimecheckExpried).Seconds > 30 ? true : false;
-            if (CheckExpried)
+            DateTime getDateTime = DateTime.Now;
+            int CheckExpried = getDateTime.Subtract(TimecheckExpried).Seconds;
+            if (CheckExpried > 30 )
             {
                 return Json(new
                 {

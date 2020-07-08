@@ -11,11 +11,19 @@ namespace Common
 {
     public class SendSMSHelper
     {
-        public void SendSMS(string phone, string message)
+        public static void SendSMS(string phone, string message)
         {
-           // const string APIKey = "AD85823FB6E8FC4314E9C607200E01";
-            const string APIKey = "AD85823FB6E8FC4314E9C607200E01";
-            const string SecretKey = "41AE952E7D94D08C9C683E3ADF0655";
+            //const string APIKey = "AD85823FB6E8FC4314E9C607200E01";
+            //const string SecretKey = "41AE952E7D94D08C9C683E3ADF0655";
+
+            const string APIKey = "795BE83928058AD084BBA3026E7417";
+            const string SecretKey = "5567E5463D76109CC63A7E4448E377";
+
+
+            //API của Cường
+            //const string APIKey = "A6D06842CFDB7B693F941A5BAE25BA";
+            //const string SecretKey = "AB72985C5B1A38C08871AA69B7E1B0";
+
 
 
             string url = "http://api.esms.vn/MainService.svc/xml/SendMultipleMessage_V4/";

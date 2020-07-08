@@ -24,30 +24,29 @@
     <div class="container">
         <div class="tab-content">
             <div class="tab-pane fade active show">
-                <h3>Xác thực hai yếu tố</h3>
-                <h5>Chúng tôi sẽ yêu cầu mã xác minh thông qua Email nếu nhận thấy thông tin đăng nhập từ một trình duyệt không được nhận dạng.</h5>
+                <h3 style="text-align:center; font-size:30px;">XÁC THỰC HAI YẾU TỐ VÀ ĐĂNG NHẬP BẰNG ĐIỆN THOẠI</h3>
+                <h5 style="margin-top:20px;">Chúng tôi sẽ gửi cho bạn OTP để thực hiện xác thực hai lớp, hoặc bạn có thể lựa chọn đăng nhập qua OTP bằng số điện thoại đã đăng ký</h5>
                 <h5 id="success" style="color: deepskyblue"></h5>
                 <br />
-                @if (Model.TwoFactor != 1)
-                {
-                <h4 style="color: darkcyan">Đã bật xác thực hai yếu tố qua Email</h4>
-                    <button id="turnoff"> Tắt xác thực 2 yếu tố</button>
-                }
-                else
-                {
-                    <h4>Đã tắt xác thực hai yếu tố qua Email</h4>
-                    <button id="turnon"> Bật xác thực 2 yếu tố</button>
-                }
-                @if (Model.IsLoginByPhone == true)
-                {
-                    <h4 style="color: darkcyan">Đã bật chức năng đăng nhập bằng số điện thoại</h4>
-                    <button id="turnoffLoginByPhone"> Tắt đăng nhập qua số điện thoại</button>
-                }
-                else
-                {
-                    <h4>Đã tắt chức năng đăng nhập bằng số điện thoại</h4>
-                    <button id="turnonLoginByPhone"> Bật đăng nhập qua số điện thoại</button>
-                }
+                <div style="display:flex; margin:10px;" >
+                    @if (Model.TwoFactor != 1)
+                    {
+                    <button type="button" id="turnoff" style="margin-left: 200px;" class="btn btn-warning">Tắt xác thực 2 yếu tố qua Email</button>
+                    }
+                    else
+                    {
+                        <button type="button" id="turnon" style="margin-left: 200px;" class="btn btn-success">Bật xác thực 2 yếu tố qua Email</button>
+                    }
+                    @*<h3>Đăng nhập bằng số điện thoại</h3>*@
+                    @if (Model.IsLoginByPhone == true)
+                    {
+                        <button   id="turnoffLoginByPhone" type="button" style="margin-left: 250px;" class="btn btn-info">Tắt đăng nhập qua số điện thoại</button>
+                    }
+                    else
+                    {
+                        <button type="button" id="turnonLoginByPhone" style="margin-left: 250px;" class="btn btn-success">Bật đăng nhập qua số điện thoại</button>
+                    }
+                </div>
             </div>
         </div>
     </div>

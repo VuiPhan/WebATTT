@@ -8,6 +8,7 @@ using System.Text;
 using System.Net.Mail;
 using System.Net;
 using System.Web.Razor.Text;
+using Common;
 
 namespace Web.Controllers
 {
@@ -100,7 +101,8 @@ namespace Web.Controllers
                     IDMemType = 4,
                     UserName = model.UserName,
                     Email = model.Email,
-                    TwoFactor = 2,
+                    TwoFactor = 1,
+                    IsLoginByPhone = false,
                     PassWord = MaHoa.MaHoaSangMD5(model.UserName + model.PassWord)
                 };
                 Session["Register"] = khachHang;
@@ -307,6 +309,18 @@ namespace Web.Controllers
         public JsonResult UpdateAccount(int id, string pass, string name, string address, string phone, string avatar)
         {
             var khachHang = db.Members.SingleOrDefault(x => x.IDMember == id);
+
+            // check phonenumber
+
+            var checkPhoneNumber = db.Members.SingleOrDefault(x => x.PhoneNumber == phone);
+            if(checkPhoneNumber !=null)
+            {
+                return Json(new
+                {
+                    isRedirect = false,
+                    mess = "Số điện thoại đã tồn tại trong hệ thống, vui lòng chọn số khác!"
+                });
+            }
             if (khachHang.PassWord != MaHoa.MaHoaSangMD5(khachHang.UserName + pass))
             {
                 return Json(new
@@ -320,7 +334,6 @@ namespace Web.Controllers
                 khachHang.Avatar = avatar;
                 khachHang.FullName = name;
                 khachHang.PhoneNumber = phone;
-
                 db.SaveChanges();
             }
             catch
@@ -556,7 +569,14 @@ namespace Web.Controllers
         {
             try
             {
-                var khachHang = db.Members.Where(x => x.Email.Equals(Email) && x.PassWord != null).SingleOrDefault();
+                var khachHang = db.Members.Where(x => x.Email.Equals(Email) && x.PassWord != null && x.IDMemType != 1).SingleOrDefault();
+                if(khachHang == null)
+                {
+                    return Json(new
+                    {
+                        isRedirect = false
+                    });
+                }
                 Session["Forgot"] = db.Members.Where(x => x.UserName == khachHang.UserName).SingleOrDefault();
                 SendMail(khachHang.FullName, Email);
             }
@@ -582,6 +602,19 @@ namespace Web.Controllers
                 var khachHang = db.Members.Where(x => x.PhoneNumber.Equals(phone) && x.PassWord != null).SingleOrDefault();
 
 
+
+                if (khachHang != null && (khachHang.PhoneNumber == "" || khachHang.PhoneNumber == null))
+                {
+                    string message = "Tài khoản chưa cập nhật số điện thoại, vui lòng cập nhật số điện thoại, để sử dụng tính năng này";
+                    return Json(new
+                    {
+                        isRedirect = -5,
+                        message = message
+                    });
+                }
+
+
+
                 if (khachHang != null && khachHang.IsLoginByPhone == false)
                 {
                     string message = "Tài khoản hiện thời không hỗ trợ đăng nhập qua" +
@@ -600,18 +633,33 @@ namespace Web.Controllers
                     });
                 }
                 Member member = db.Members.Where(x => x.PhoneNumber == phone).SingleOrDefault();
+                if (member!=null && member.TimeSendOTPLoginByPhone != null)
+                {
+
+                    DateTime TimeSendOTPLoginByPhone = (DateTime)member.TimeSendOTPLoginByPhone;
+                    int timeSecond = DateTime.Now.Subtract(TimeSendOTPLoginByPhone).Seconds;
+                    int timeSecond2 = 30 - timeSecond;
+                    if (timeSecond < 30)
+                    {
+                        return Json(new
+                        {
+                            isRedirect = -500, // Mã gửi lại OTP
+                            mess = "Vui lòng gửi lại OTP sau : " + timeSecond2 + " giây",
+                            timeleft = timeSecond2
+                        });
+                    }
+                }
                 Session["MemberLoginByPhone"] = member;
                 member.TimeSendOTPLoginByPhone = DateTime.Now;
                 member.NumberOfTries = 2;
                 Random rd = new Random();
                 member.OTPLoginByPhone = rd.Next(100000, 999999).ToString();
+                SendSMSHelper.SendSMS(member.PhoneNumber, "Vui lòng không cung cấp mã OTP cho bất kỳ ai.Mã OTP của bạn là " + member.OTPLoginByPhone.ToString());
                 db.SaveChanges();
                 return Json(new
                 {
                     isRedirect = 1 // Gửi OTP thành công
                 });
-                
-                // SendMail(khachHang.FullName, Email);
             }
             catch
             {
@@ -626,13 +674,25 @@ namespace Web.Controllers
             try
             {
                 Member MemberLoginByPhone = (Member)Session["MemberLoginByPhone"];
-                var Member = db.Members.Where(p=>p.IDMember == MemberLoginByPhone.IDMember && p.OTPLoginByPhone == OTP).SingleOrDefault();
+                var MemberCheck = db.Members.Where(p=>p.IDMember == MemberLoginByPhone.IDMember).SingleOrDefault();
+                DateTime TimecheckExpried = (DateTime)MemberCheck.TimeSendOTPLoginByPhone;
+                DateTime getDateTime = DateTime.Now;
+                int CheckExpried = getDateTime.Subtract(TimecheckExpried).Seconds;
+                if (CheckExpried > 30)
+                {
+                    return Json(new
+                    {
+                        isRedirect = -1000, // Mã gửi lại OTP
+                        mess = "Vui lòng thực hiện gửi lại OTP. Mã OTP của bạn đã hết hạn"
+                    });
+                }
+                var Member = db.Members.Where(p => p.IDMember == MemberLoginByPhone.IDMember && p.OTPLoginByPhone == OTP).SingleOrDefault();
                 Session["Account"] = Member;
                 if (Member.IDMemType == 1)
                 {
                     return Json(new
                     {
-                        isRedirect = false
+                        isRedirect = -1
                     });
                 }
             }
@@ -640,14 +700,14 @@ namespace Web.Controllers
             {
                 return Json(new
                 {
-                    isRedirect = false
+                    isRedirect = -1
                 });
             }
 
             return Json(new
             {
                 redirectUrl = Url.Action("Index", "Account"),
-                isRedirect = true
+                isRedirect = 1
             });
         }
 

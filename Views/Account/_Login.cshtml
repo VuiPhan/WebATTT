@@ -1,4 +1,12 @@
-﻿<div class="login_form_inner">
+﻿
+<style>
+    .fontTimeNewRoman{
+        font-family:'Times New Roman', Times, serif
+    }
+</style>
+
+
+<div class="login_form_inner">
     <h3>Đăng nhập để tiếp tục</h3>
     <div class="row login_form">
         <p id="error" style="color: red"></p>
@@ -22,16 +30,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Quên mật khẩu</h3>
+                <h3 class="fontTimeNewRoman">Quên mật khẩu</h3>
             </div>
             <div class="modal-body">
                 <h4>Nhập địa chỉ Email để tiếp tục</h4>
                 <h6 id="notifi" style="color:forestgreen;"></h6>
-                <input type="email" id="mail" class="form-control" placeholder="Địa chỉ Email" />
+                <input  type="email" id="mail" class="form-control" placeholder="Địa chỉ Email" />
             </div>
             <div class="modal-footer">
-                <a href="#" class="btn btn-light" data-dismiss="modal" id="r">Xác nhận</a>
-                <a href="#" class="btn btn-gradient-primary mr-2" id="s" onclick="Get()">Gửi</a>
+                <a href="#"  class="btn btn-light " data-dismiss="modal" id="r">Xác nhận</a>
+                <a href="#"  class="btn btn-gradient-primary mr-2 " id="s" onclick="Get()">Gửi</a>
             </div>
         </div>
     </div>
@@ -45,18 +53,19 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Đăng nhập bằng số điện thoại</h3>
+                <h3 class="fontTimeNewRoman" style="text-align:center;">Đăng nhập bằng số điện thoại</h3>
             </div>
             <div class="modal-body">
                 <h4></h4>
-                <h6 id="notifiPhoneNumber" style="color:forestgreen;"></h6>
+                <h6 id="notifiPhoneNumber" class="" style="color:forestgreen;font-size:20px;"></h6>
+                <h6 id="notifiSendOTP"  style="color:forestgreen;font-size:20px;"></h6>
                 <input type="text" id="phonenumber" class="form-control" placeholder="Nhập số điện thoại" />
-                <input type="password" id="otp" class="form-control"  placeholder="Nhập mã OTP" />
+                <input type="password" id="otp" class="form-control" style="margin-top: 10px;" placeholder="Nhập mã OTP" />
             </div>
             <div class="modal-footer">
                 @*<a href="#" class="btn btn-light" onclick="CheckOTP()" data-dismiss="modal" id="SubmitLoginByPhone">Đăng nhập</a>*@
                 <a href="#" class="btn btn-gradient-primary mr-2" id="SubmitLoginByPhone" onclick="CheckOTP()">Đăng nhập</a>
-                <a href="#" class="btn btn-gradient-primary mr-2" style="margin-top: 10px;" id="s" onclick="SendOTP()">Gửi mã OTP</a>
+                <a href="#" class="btn btn-gradient-primary mr-2"  id="s" onclick="SendOTP()">Gửi mã OTP</a>
             </div>
         </div>
     </div>
@@ -70,7 +79,9 @@
 
 <script type="text/javascript">
     $("#otp").hide();
+    $("#phonenumber").show();
     $("#SubmitLoginByPhone").hide();
+    $("#notifiSendOTP").html("");
     function validateEmail(email) {
         const re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
@@ -91,7 +102,8 @@
             checkEmail2 = false;
         }
     })
-
+    var timeleft = 30;
+    $("#countdown").hide();
     $("#phonenumber").change(function () {
         debugger;
         $("#phonenumber").css('border-color', 'lightgrey');
@@ -180,12 +192,12 @@
         return !isNaN(num)
     }
     var SendOTP = function () {
-        //   var email = $("#mail").val();
         if (phoneNumber == '') {
             alert('Vui lòng nhập số điện thoại');
             return;
         }
-
+        $("#countdown").show();
+        timeleft = 30;
         if (isNumeric(phoneNumber) == false || phoneNumber.length != 10) {
             $("#notifiPhoneNumber").html("Vui lòng nhập đúng định dạng số điện thoại");
             $("#notifiPhoneNumber").css('color', 'red');
@@ -195,12 +207,23 @@
             type: "POST",
             url: "/Account/SendOTPLoginByPhone?phone=" + phoneNumber,
             success: function (json) {
+                debugger;
+                if (json.isRedirect == -5) {
+                    alert(json.message);
+                }
                 if (json.isRedirect == -2) {
                     alert(json.message);
+                }
+                if (json.isRedirect == -500) {
+                    debugger;
+                    alert(json.mess);
                 }
                 if (json.isRedirect == 1) {
                     $("#otp").show();
                     $("#SubmitLoginByPhone").show();
+                    $("#phonenumber").hide();
+                    $("#notifiSendOTP").html("Mã OTP đã được gửi đến số điện thoại của bạn.");
+                    $("#notifiSendOTP").css('color', 'green');
                 }
                 if (json.isRedirect == -1)
                 {
@@ -210,6 +233,7 @@
                     $("#s").hide();
                     $("#r").show();
                 }
+             
             }
         })
     }
@@ -220,27 +244,25 @@
             return;
         }
         debugger;
-        //if (checkPhoneNumber == false) {
-        //    debugger;
-        //    alert('Vui lòng nhập đúng định dạng số điện thoại');
-        //    return;
-        //}
         $.ajax({
             type: "POST",
             url: "/Account/LoginByPhone?OTP=" + OTP,
             success: function (json) {
-                if (json.isRedirect) {
+                debugger;
+                if (json.isRedirect == -1000) {
+                    alert(json.mess);
+                }
+                if (json.isRedirect == 1) {
                     window.location.href = json.redirectUrl;
                 }
-                else {
+
+                
+                if (json.isRedirect == -1) {
                     debugger;
                     $("#LoginByPhone").modal();
-                    $("#notifiPhoneNumber").html("Mã OTP không chính xác");
+                    alert('Mã OTP không chính xác');
                     $("#notifiPhoneNumber").css('color', 'red');
                     $("#LoginByPhone").show();
-                    //$("#s").hide();
-
-                    //$("#r").show();
                 }
             }
         })
@@ -273,6 +295,14 @@
             }
         })
     }
-
+    //var downloadTimer = setInterval(function () {
+    //    if (timeleft <= 0) {
+    //        clearInterval(downloadTimer);
+    //        document.getElementById("countdown").innerHTML = "Hết hạn OTP";
+    //    } else {
+    //        document.getElementById("countdown").innerHTML = timeleft + " giây còn lại sẽ hết hạn OTP";
+    //    }
+    //    timeleft -= 1;
+    //}, 1000);
 </script>
 
